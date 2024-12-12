@@ -12,7 +12,7 @@ import AnimatedTabs from '../components/Navbar';
   </head>
   <body class="flex flex-col min-h-screen">
     <!-- Contenido Principal -->
-    <div class="flex-grow">
+    <div id="main-content" class="flex-grow">
       <slot />
     </div>
     
@@ -26,9 +26,7 @@ import AnimatedTabs from '../components/Navbar';
         width: 100%;
         height: 100%;
       }
-      @view-transition{
-        navigation: auto;
-      }
+
     </style>
   </body>
 </html>
