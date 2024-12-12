@@ -1,0 +1,34 @@
+---
+import React from 'react';
+import AnimatedTabs from '../components/Navbar';
+---
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Mi Sitio Web</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- Contenido Principal -->
+    <div class="flex-grow">
+      <slot />
+    </div>
+    
+    <!-- Menú de Navegación Persistente -->
+    <AnimatedTabs client:load />
+    
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+      @view-transition{
+        navigation: auto;
+      }
+    </style>
+  </body>
+</html>

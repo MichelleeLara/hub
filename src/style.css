@@ -1,0 +1,13 @@
+/* En tu archivo CSS global, por ejemplo, styles.css */
+
+.no-scrollbar {
+    /* Ocultar scrollbar para IE, Edge y Firefox */
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  /* Ocultar scrollbar para Chrome, Safari y Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
