@@ -19,14 +19,19 @@ import AnimatedTabs from '../components/Navbar';
     <!-- Menú de Navegación Persistente -->
     <AnimatedTabs client:load />
     
-    <style>
-      html,
-      body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-      }
-
-    </style>
   </body>
 </html>
+
+<style is:global>
+  html,
+  body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  }
+
+
+  @view-transition{
+  navigation: auto;
+  }
+</style>

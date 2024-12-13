@@ -83,40 +83,40 @@ export default function AnimatedTabs() {
   };
 
   // Si aún no se ha montado, renderiza el estado SSR inicial (primera pestaña activa)
-  if (!isMounted) {
-    return (
-      <nav className="fixed bottom-0 left-0 right-0 border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-5 last:pr-5 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
-        <ul className="no-scrollbar flex items-center justify-center text-center gap-8">
-          {tabs.map((tab, index) => {
-            const IconComponent = iconMap[tab.id.toLowerCase()];
-            const isActive = (index === 0);
-            return (
-              <li
-                key={tab.id}
-                className={`relative rounded-full px-3 py-1.5 font-medium text-xs text-[#8a8a8a] gap-1 transition focus-visible:outline-2 ${
-                  isActive ? "text-[#4a4a4a] dark:text-white" : ""
-                }`}
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                <div className="flex flex-col items-center gap-1">
-                  {isActive && (
-                    <motion.span
-                      layoutId="blend"
-                      className="absolute inset-0 z-10 mix-blend-darken bg-[#eff3f4] rounded-lg border border-[#e1e1e3] dark:border-[#393939] dark:bg-[#2c2c2c] dark:mix-blend-lighten"
-                    />
-                  )}
-                  <div className={`${isActive ? "text-white" : ""}`}>
-                    <IconComponent />
-                  </div>
-                  {tab.label}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    );
-  }
+  // if (!isMounted) {
+  //   return (
+  //     <nav className="fixed bottom-0 left-0 right-0 border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-5 last:pr-5 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
+  //       <ul className="no-scrollbar flex items-center justify-center text-center gap-8">
+  //         {tabs.map((tab, index) => {
+  //           const IconComponent = iconMap[tab.id.toLowerCase()];
+  //           const isActive = (index === 0);
+  //           return (
+  //             <li
+  //               key={tab.id}
+  //               className={`relative rounded-full px-3 py-1.5 font-medium text-xs text-[#8a8a8a] gap-1 transition focus-visible:outline-2 ${
+  //                 isActive ? "text-[#4a4a4a] dark:text-white" : ""
+  //               }`}
+  //               style={{ WebkitTapHighlightColor: "transparent" }}
+  //             >
+  //               <div className="flex flex-col items-center gap-1">
+  //                 {isActive && (
+  //                   <motion.span
+  //                     layoutId="blend"
+  //                     className="absolute inset-0 z-10 mix-blend-darken bg-[#eff3f4] rounded-lg border border-[#e1e1e3] dark:border-[#393939] dark:bg-[#2c2c2c] dark:mix-blend-lighten"
+  //                   />
+  //                 )}
+  //                 <div className={`${isActive ? "text-white" : ""}`}>
+  //                   <IconComponent />
+  //                 </div>
+  //                 {tab.label}
+  //               </div>
+  //             </li>
+  //           );
+  //         })}
+  //       </ul>
+  //     </nav>
+  //   );
+  // }
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-5 last:pr-5 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
@@ -128,9 +128,9 @@ export default function AnimatedTabs() {
             <li
               key={tab.id}
               onClick={(e) => handleTabClick(e, tab)}
-              className={`relative rounded-full px-3 py-1.5 font-medium text-xs text-[#8a8a8a] gap-1 transition focus-visible:outline-2 ${
-                isActive ? "text-[#4a4a4a] dark:text-white" : ""
-              }`}
+              className={`relative rounded-full px-2 py-1.5 font-medium text-xs text-[#8a8a8a] gap-1 transition focus-visible:outline-2 ${
+                isActive ? "text-[#000000] dark:text-white" : ""
+              }dark:text-[#616161]`}
               style={{ WebkitTapHighlightColor: "transparent" }}
             >
               <a href={tab.path} className="flex flex-col items-center gap-1">
@@ -139,20 +139,20 @@ export default function AnimatedTabs() {
                     <motion.span
                       key="active-bg"
                       layoutId="blend"
-                      initial={{ opacity: 0, scale: 0.9 }}
+                      initial={{ opacity: 0 }}
                       animate={{ 
                         opacity: 1, 
-                        scale: 1,
+                        // scale: 1,
                         transition: { 
-                          duration: 0.3,
+                          duration: .2,
                           ease: "easeInOut"
                         }
                       }}
                       exit={{ 
                         opacity: 0, 
-                        scale: 0.9,
+                        // scale: 1,
                         transition: { 
-                          duration: 0.3,
+                          duration: .2,
                           ease: "easeInOut"
                         }
                       }}
@@ -160,10 +160,12 @@ export default function AnimatedTabs() {
                     />
                   )}
                 </AnimatePresence>
-                <div className={`${isActive ? "text-white" : ""}`}>
+                <div className={`flex flex-col gap-1 items-center justify-center${isActive ? "text-[#000000] dark:text-white" : "text-[#616161] dark:text-[#616161]"}`}>
                   <IconComponent />
+                  <p className="">
+                    {tab.label}
+                  </p>
                 </div>
-                {tab.label}
               </a>
             </li>
           );
