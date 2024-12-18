@@ -2,6 +2,7 @@
 import ThemeToggle from '../components/Themetoggle';
 import Layout from '../layouts/Layout.astro';
 import { AnimateFragments } from '../components/Hero'
+import Jobs from '../components/Jobs'
 // import Navbar from '../components/Navbar'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -13,13 +14,13 @@ import { AnimateFragments } from '../components/Hero'
 	</head> -->
 	<main class="bg-white min-h-screen text-black dark:bg-[#161616] dark:text-gray-300 transition-colors duration-300 pb-32">
 
-		<section class="fixed left-0 top-0 w-full bg-[#eff3f4] dark:bg-[#1c1c1c] py-3">
+		<section class="fixed left-0 top-0 w-full bg-[#eff3f4] dark:bg-[#1c1c1c] py-3 z-50">
 			<div class="mx-6 flex gap-3 items-center justify-between">
 				<div class="flex gap-3 items-center">
 					<img src="/author.png" class=" w-12 object-top" alt="">
 					<div class="flex flex-col gap-0">
 						<p class="font-semibold text-sm dark:text-secondary">Mich Rodriguez</p>
-						<p class="text-xs font-medium text-terteary">Desarrollador front-end</p>
+						<p class="text-xs font-medium text-terteary">Frontend React</p>
 					</div>
 				</div>
 	
@@ -29,26 +30,88 @@ import { AnimateFragments } from '../components/Hero'
 
 		<section class="pt-28">
 			<div class="mx-6 flex flex-col gap-4">
-			  <h1 class="text-4xl text-secondary font-semibold min-h-fit">
+			  <h1 class="text-4xl text-gray-800 font-semibold min-h-fit dark:text-secondary">
 				Hola, soy Mich.
 				<AnimateFragments 
 				client:load 
 				value={"Frontend <span class=\"text-terteary\">React.</span>"}					
 				/>
 			  </h1>
-			  <div class="sm:aspect-auto text-terteary min-h-min">
+			  <div class="sm:aspect-auto dark:text-terteary min-h-min text-balance">
 				  <AnimateFragments 
 					client:load 
-					value={"Hola, <a href=\"/yo\" class=\"text-secondary flex items-center gap-2\"><img src=\"/author_home.png\" class=\"w-9 inline\" alt=\"\" /> Soy Mich</a> frontend <span class=\"\">Developer</span> Me gusta ir más allá del código: desarrollo experiencias que conectan, funcionan y sorprenden. "}
+					value={"<a href=\"/yo\" class=\"text-terteary font-semibold dark:text-secondary flex items-center gap-2\"><img src=\"/author_home.png\" class=\"w-9 inline\" alt=\"\" /> Soy Mich</a> desarrollador frontend especializado en React. Creo proyectos funcionales, con rendimiento y precisión,  ofreciendo experiencias únicas."}
 				  />
 			  </div>
 		  
 			  <div class="flex gap-3 text-center mt-0 flex-wrap">
-				<a href="" class="border-2 rounded-lg bg-[#2c2c2c] border-[#2c2c2c] text-xs py-2 px-1.5">Conoceme más</a>
-				<a href="" class="border-2 rounded-lg border-[#2c2c2c] text-xs py-2 px-1.5">¿Hablamos sobre un proyecto?</a>
+				<a href="" class="border-2 rounded-lg bg-[#eff3f4] border-[#eff3f4] dark:bg-[#2c2c2c] dark:border-[#2c2c2c] text-xs py-2 px-1.5">¿Por qué elegirme?</a>
+				<a href="" class="border-2 rounded-lg border-[#eff3f4] dark:border-[#2c2c2c] text-xs py-2 px-1.5">Colaboremos !</a>
 			  </div>
 			</div>
 		</section>
+
+		<section class="pt-14">
+			<div class="mx-6 flex flex-col gap-8">
+			  <h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">Últimos proyectos</h2>
+			  <main class="flex gap-4">
+				<Jobs client:visible/>
+				<aside class="flex flex-col gap-1">
+				  <h3 class="font-semibold">Tech lead - Rand abogados</h3>
+				  <p class="text-xs text-terteary">Septiembre 2024, Diciembre 2024</p>
+				  <img src="/rand.png" alt="" class="mt-5 rounded-lg">
+				  <p class="text-terteary mt-3">ABC Cafe, a local coffee shop with a loyal customer base, wanted to undergo a rebranding to attract a younger demographic and stand out in a competitive market. The challenge was to modernize their brand identity without alienating their existing customers.</p>
+				  <a href="" class="text-terteary">Leer más</a>
+				</aside>
+			  </main>
+			</div>
+		  </section>
+
+		<section class="pt-14">
+			<div class="mx-6 flex flex-col gap-8">
+				<h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">Ultimos proyectos</h2>
+				<main class="flex gap-4">
+					<div class="flex flex-col gap-2 items-center justify-center">
+						<div class="p-2.5 rounded-full bg-[#eff3f4] text-[#616161] dark:bg-[#2c2c2c] sticky top-20">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="currentColor" fill="none">
+								<rect width="24" height="24" fill="transparent" />
+								<path d="M2 14C2 11.1911 2 9.78661 2.67412 8.77772C2.96596 8.34096 3.34096 7.96596 3.77772 7.67412C4.78661 7 6.19108 7 9 7H15C17.8089 7 19.2134 7 20.2223 7.67412C20.659 7.96596 21.034 8.34096 21.3259 8.77772C22 9.78661 22 11.1911 22 14C22 16.8089 22 18.2134 21.3259 19.2223C21.034 19.659 20.659 20.034 20.2223 20.3259C19.2134 21 17.8089 21 15 21H9C6.19108 21 4.78661 21 3.77772 20.3259C3.34096 20.034 2.96596 19.659 2.67412 19.2223C2 18.2134 2 16.8089 2 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M16 7C16 5.11438 16 4.17157 15.4142 3.58579C14.8284 3 13.8856 3 12 3C10.1144 3 9.17157 3 8.58579 3.58579C8 4.17157 8 5.11438 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M6 11L6.65197 11.202C10.0851 12.266 13.9149 12.266 17.348 11.202L18 11M12 12V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</div>
+						<div class="h-full w-1 bg-[#eff3f4] dark:bg-[#2c2c2c]"></div>
+					</div>
+					<aside class="flex flex-col gap-1">
+						<h3 class="font-semibold">Tech lead - Rand abogados</h3>
+						<p class="text-xs text-terteary">Septiembre 2024, Diciembre 2024</p>
+						<img src="/rand.png" alt="" class="mt-5 rounded-lg">
+						<p class="text-terteary mt-3">ABC Cafe, a local coffee shop with a loyal customer base, wanted to undergo a rebranding to attract a younger demographic and stand out in a competitive market. The challenge was to modernize their brand identity without alienating their existing customers.</p>
+						<a href="" class="text-terteary">Leer más</a>
+					</aside>
+
+				</main>
+			</div>
+		</section>
+		<section class="pt-14">
+			<div class="mx-6 flex flex-col gap-8">
+				<h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">Ultimos proyectos</h2>
+				<main class="flex gap-4">
+					
+						<Jobs/>
+				
+					<aside class="flex flex-col gap-1">
+						<h3 class="font-semibold">Tech lead - Rand abogados</h3>
+						<p class="text-xs text-terteary">Septiembre 2024, Diciembre 2024</p>
+						<img src="/rand.png" alt="" class="mt-5 rounded-lg">
+						<p class="text-terteary mt-3">ABC Cafe, a local coffee shop with a loyal customer base, wanted to undergo a rebranding to attract a younger demographic and stand out in a competitive market. The challenge was to modernize their brand identity without alienating their existing customers.</p>
+						<a href="" class="text-terteary">Leer más</a>
+					</aside>
+
+				</main>
+			</div>
+		</section>
+		
 
 	</main>
 

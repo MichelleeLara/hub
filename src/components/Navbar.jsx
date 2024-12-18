@@ -119,7 +119,7 @@ export default function AnimatedTabs() {
   // }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-6 last:pr-6 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-6 last:pr-6 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
       <ul className="no-scrollbar flex items-center justify-center text-center gap-8">
         {tabs.map((tab) => {
           const IconComponent = iconMap[tab.id.toLowerCase()];
@@ -156,7 +156,7 @@ export default function AnimatedTabs() {
                           ease: "easeInOut"
                         }
                       }}
-                      className="absolute inset-0 z-10 mix-blend-darken bg-[#eff3f4] rounded-lg border border-[#e1e1e3] dark:border-[#393939] dark:bg-[#2c2c2c] dark:mix-blend-lighten"
+                      className="absolute inset-0 z-10 mix-blend-darken bg-[#eff3f4] rounded-lg border  border-[#e1e1e3] dark:border-[#393939] dark:bg-[#2c2c2c] dark:mix-blend-lighten"
                     />
                   )}
                 </AnimatePresence>
