@@ -38,7 +38,7 @@ const TracingBeam = () => {
   // Interpolación de colores para el ícono (de gris a azul)
   const iconColor = useTransform(scrollYProgress, [0, 1], ["#999999", "#148cfa"]);
   return (
-    <div ref={containerRef} className="relative  flex flex-col items-center bg-[#161611]">
+    <div ref={containerRef} className="relative  flex flex-col items-center">
       {/* Icono Sticky */}
       <motion.div
         className="p-3 rounded-full bg-[#eff3f4] dark:bg-[#2c2c2c] sticky top-[72px] z-10"

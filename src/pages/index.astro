@@ -30,27 +30,18 @@ import Jobs from '../components/Jobs'
 
 		<section class="pt-28">
 			<div class="mx-6 flex flex-col gap-4">
-			  <h1 class="text-4xl text-gray-800 font-semibold min-h-fit dark:text-secondary">
-				Hola, soy Mich.
+			  <h1 class="text-4xl text-balance text-gray-800 font-semibold min-h-fit dark:text-secondary">
+				Soy Mich.
 				<AnimateFragments 
 				client:load 
-				value={"Frontend <span class=\"text-terteary\">React.</span>"}					
+				value={"Desarrollador frontend <span class=\"text-terteary\">React.</span>"}					
 				/>
 			  </h1>
-			  <div class="sm:aspect-auto dark:text-terteary min-h-min text-balance">
-				  <AnimateFragments 
-					client:load 
-					value={"<a href=\"/yo\" class=\"text-terteary font-semibold dark:text-secondary flex items-center gap-2\"><img src=\"/author_home.png\" class=\"w-7 inline\" alt=\"\" /> Soy Mich</a> desarrollador frontend especializado en React. Creo <a href=\"/\" class=\"flex items-center gap-3 text-white\"><div class=\"px-4 py-0 rounded-xl bg-primary text-white flex items-center justify-center\"><span class=\"inline-flex\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" color=\"currentColor\" fill=\"none\"><path d=\"M20.0001 11.9998L4.00012 11.9998\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M15.0003 17C15.0003 17 20.0002 13.3176 20.0002 12C20.0002 10.6824 15.0002 7 15.0002 7\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg></span></div><p>proyectos</p></a> proyectos funcionales, con rendimiento y precisión, ofreciendo experiencias únicas."}				
-				/>
-				  <!-- <a href="/" class="flex items-center gap-3">
-					<div class="px-4 py-0 rounded-xl bg-primary text-white flex items-center justify-center">
-						<span class="inline-flex"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-						<path d="M20.0001 11.9998L4.00012 11.9998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-						<path d="M15.0003 17C15.0003 17 20.0002 13.3176 20.0002 12C20.0002 10.6824 15.0002 7 15.0002 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-						</svg></span>
-					</div>
-					<p>proyectos</p>
-				  </a> -->
+			  <div class="sm:aspect-auto dark:text-terteary min-h-min text-pretty">
+				<AnimateFragments 
+				client:load 
+				value={"Hola <a href=\"/yo\" class=\"text-terteary font-semibold dark:text-secondary flex items-center gap-2\"><img src=\"/author_home.png\" class=\"w-7 inline\" alt=\"\" /> Soy Mich</a>, construyo <a href=\"/\" class=\"flex items-center gap-3 text-white\"><div class=\"px-4 py-0 rounded-xl bg-primary text-white flex items-center justify-center\"><span class=\"inline-flex\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" color=\"currentColor\" fill=\"none\"><path d=\"M20.0001 11.9998L4.00012 11.9998\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M15.0003 17C15.0003 17 20.0002 13.3176 20.0002 12C20.0002 10.6824 15.0002 7 15.0002 7\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg></span></div><p class=\"text-terteary font-semibold dark:text-secondary\">proyectos</p></a> funcionales, con alto rendimiento, precisión y experiencias únicas."}				
+			  />
 			  </div>
 		  
 			  <div class="flex gap-3 text-center mt-0 flex-wrap">
@@ -66,7 +57,7 @@ import Jobs from '../components/Jobs'
 			  <main class="flex gap-4">
 				<Jobs client:visible/>
 				<aside class="flex flex-col gap-1">
-						<div class="flex flex-col gap-1 sticky top-[71px] bg-[#1c1c1c] w-full">
+						<div class="flex flex-col gap-1 sticky top-[71px] bg-white w-full dark:bg-[#161616]">
 						<h3 class="font-semibold">Tech lead - Rand abogados</h3>
 						<p class="text-xs text-terteary">Septiembre 2024, Diciembre 2024</p>
 					</div>
@@ -80,7 +71,7 @@ import Jobs from '../components/Jobs'
 			  <main class="flex gap-4">
 				<Jobs client:visible/>
 				<aside class="flex flex-col gap-1">
-						<div class="flex flex-col gap-1 sticky top-[71px] bg-[#1c1c1c] w-full">
+						<div class="flex flex-col gap-1 sticky top-[71px] bg-white w-full dark:bg-[#161616]">
 						<h3 class="font-semibold">Desarrollador front-end - Medibiologica</h3>
 						<p class="text-xs text-terteary">Septiembre 2024, Diciembre 2024</p>
 					</div>
@@ -94,7 +85,7 @@ import Jobs from '../components/Jobs'
 			  <main class="flex gap-4">
 				<Jobs client:visible/>
 				<aside class="flex flex-col gap-1">
-						<div class="flex flex-col gap-1 sticky top-[71px] bg-[#1c1c1c] w-full">
+						<div class="flex flex-col gap-1 sticky top-[71px] bg-white w-full dark:bg-[#161616]">
 						<h3 class="font-semibold">DevOps fullStack Engineer  - Nomad Technologies</h3>
 						<p class="text-xs text-terteary">Septiembre 2024, Diciembre 2024</p>
 					</div>
