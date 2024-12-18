@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useSpring, useTransform, useInView } from "framer-motion";
+import { IconProjects } from "../icons/Icons";
 
 const TracingBeam = () => {
   const containerRef = useRef(null);
@@ -34,28 +35,24 @@ const TracingBeam = () => {
 
   // Convertimos el progreso en altura
   const height = useTransform(scrollYProgress, (value) => `${value * 100}%`);
-
+  // Interpolación de colores para el ícono (de gris a azul)
+  const iconColor = useTransform(scrollYProgress, [0, 1], ["#999999", "#148cfa"]);
   return (
-    <div ref={containerRef} className="relative  flex flex-col items-center">
+    <div ref={containerRef} className="relative  flex flex-col items-center bg-[#161611]">
       {/* Icono Sticky */}
-      <div className="p-3 rounded-full bg-[#eff3f4] dark:bg-[#2c2c2c] sticky top-20 z-10">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          color="currentColor"
-          fill="none"
-        >
-          <path
-            d="M2 14C2 11.1911 2 9.78661 2.67412 8.77772C2.96596 8.34096 3.34096 7.96596 3.77772 7.67412C4.78661 7 6.19108 7 9 7H15C17.8089 7 19.2134 7 20.2223 7.67412C20.659 7.96596 21.034 8.34096 21.3259 8.77772C22 9.78661 22 11.1911 22 14C22 16.8089 22 18.2134 21.3259 19.2223C21.034 19.659 20.659 20.034 20.2223 20.3259C19.2134 21 17.8089 21 15 21H9C6.19108 21 4.78661 21 3.77772 20.3259C3.34096 20.034 2.96596 19.659 2.67412 19.2223C2 18.2134 2 16.8089 2 14Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+      <motion.div
+        className="p-3 rounded-full bg-[#eff3f4] dark:bg-[#2c2c2c] sticky top-[72px] z-10"
+        style={{
+          color: iconColor, // Aplica el color interpolado al ícono
+        }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} height={20} color={"currentColor"} fill={"none"}>
+          <rect width="24" height="24" fill="transparent" />
+          <path d="M2 14C2 11.1911 2 9.78661 2.67412 8.77772C2.96596 8.34096 3.34096 7.96596 3.77772 7.67412C4.78661 7 6.19108 7 9 7H15C17.8089 7 19.2134 7 20.2223 7.67412C20.659 7.96596 21.034 8.34096 21.3259 8.77772C22 9.78661 22 11.1911 22 14C22 16.8089 22 18.2134 21.3259 19.2223C21.034 19.659 20.659 20.034 20.2223 20.3259C19.2134 21 17.8089 21 15 21H9C6.19108 21 4.78661 21 3.77772 20.3259C3.34096 20.034 2.96596 19.659 2.67412 19.2223C2 18.2134 2 16.8089 2 14Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M16 7C16 5.11438 16 4.17157 15.4142 3.58579C14.8284 3 13.8856 3 12 3C10.1144 3 9.17157 3 8.58579 3.58579C8 4.17157 8 5.11438 8 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M6 11L6.65197 11.202C10.0851 12.266 13.9149 12.266 17.348 11.202L18 11M12 12V14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      </div>
+      </motion.div>
       {/* Línea con efecto de degradado y brillo */}
       <div className="relative w-1 h-full overflow-hidden">
         {/* Línea principal */}
