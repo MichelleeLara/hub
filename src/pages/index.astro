@@ -3,6 +3,10 @@ import ThemeToggle from '../components/Themetoggle';
 import Layout from '../layouts/Layout.astro';
 import { AnimateFragments } from '../components/Hero'
 import Jobs from '../components/Jobs'
+import Figma from '../icons/Figma.astro';
+import React from '../icons/React.astro';
+import NextJS from '../icons/NextJS.astro';
+import Tailwind from '../icons/Tailwind.astro';
 // import Navbar from '../components/Navbar'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -48,6 +52,113 @@ import Jobs from '../components/Jobs'
 				<a href="" class="border-2 rounded-lg bg-[#eff3f4] border-[#eff3f4] dark:bg-[#2c2c2c] dark:border-[#2c2c2c] text-xs py-2 px-1.5">¿Por qué elegirme?</a>
 				<a href="" class="border-2 rounded-lg border-[#eff3f4] dark:border-[#2c2c2c] text-xs py-2 px-1.5">Colaboremos !</a>
 			  </div>
+			</div>
+		</section>
+
+		<section class="pt-28">
+			<div class="mx-6 flex flex-col gap-6">
+				<div class="flex flex-col gap-1">
+					<h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">Mi stack</h2>
+					<p class="text-sm text-gray-800 dark:text-terteary">
+						Estas son las herramientas y tecnologías que utilizo para crear proyectos funcionales y escalables.
+					</p>	
+				</div>
+
+				<article class="flex flex-col gap-2">
+					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Frontend</h3>
+					
+					
+					
+					<!-- React -->
+					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
+						<div class="icon-contaisner ">
+							<div class="w-10 h-10 flex items-center justify-center text-[#087ea4] relative z-10">
+								<React/>
+							</div>
+						  <div class="w-36 absolute text-[#087ea4] top-[-2rem] left-[-2rem] blur-[40px]">
+							<React/>
+						  </div>
+						</div>
+						<div class="content">
+						  <h4 class="font-semibold text-secondary text-sm">React</h4>
+						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
+						</div>
+					</div>
+
+					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
+						<div class="icon-contaisner ">
+							<div class="w-7 h-7 flex items-center justify-center text-[#087ea4] fill-white relative z-10">
+								<NextJS/>
+							</div>
+						  <div class="w-36 absolute fill-gray-300 top-[-2rem] left-[-2rem] blur-[40px]">
+							<NextJS/>
+						  </div>
+						</div>
+						<div class="content">
+						  <h4 class="font-semibold text-secondary text-sm">Next JS</h4>
+						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
+						</div>
+					</div>
+
+					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
+						<div class="icon-contaisner ">
+							<div class="w-7 flex items-center justify-center text-[#087ea4] fill-white relative z-10">
+								<Tailwind/>
+							</div>
+						  <div class="w-36 absolute fill-gray-300 top-[-2rem] left-[-2rem] blur-[40px]">
+							<Tailwind/>
+						  </div>
+						</div>
+						<div class="content">
+						  <h4 class="font-semibold text-secondary text-sm">Tailwind</h4>
+						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
+						</div>
+					</div>
+
+
+					
+				</article>
+				<article class="flex flex-col gap-2">
+					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Nube</h3>
+					
+					
+					
+					
+					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
+						<div class="icon-container ">
+						  <img src="/Figma_Icon.svg" alt="Figma" class="icon w-10 z-10 relative">
+						  <div class="w-36 absolute top-[-2rem] left-[-2rem] blur-[40px]">
+							<Figma/>
+						  </div>
+						</div>
+						<div class="content">
+						  <h4 class="font-semibold text-secondary text-sm">Figma</h4>
+						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
+						</div>
+					  </div>
+					
+				</article>
+				<article class="flex flex-col gap-2">
+					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Diseño</h3>
+					
+					
+					
+					
+					<div class="rounded-xl flex items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
+						<div class="icon-container ">
+						  <img src="/Figma_Icon.svg" alt="Figma" class="icon w-14 z-10 relative">
+						  <div class="w-36 absolute top-[-2rem] left-[-2rem] blur-[40px]">
+							<Figma/>
+						  </div>
+						</div>
+						<div class="content">
+						  <h4 class="font-semibold text-secondary text-sm">Figma</h4>
+						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
+						</div>
+					  </div>
+					
+				</article>
+
 			</div>
 		</section>
 
@@ -132,6 +243,8 @@ import Jobs from '../components/Jobs'
 		-moz-border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
 		}
 	}
+
+
 </style>
 
 
