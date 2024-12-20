@@ -1,103 +1,176 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IconExplore, IconsMe, IconProjects, IconStack, IconServices, IconWhatsapp, IconLinkedin } from "../icons/Icons";
+import '../style.css';
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState("dark");
+const tabs = [
+  { id: "inicio", label: "Inicio", path: "/" },
+  { id: "yo", label: "Yo", path: "/yo" },
+  { id: "proyectos", label: "Proyectos", path: "/proyectos" },
+  { id: "stack", label: "Stack", path: "/stack" },
+  { id: "servicios", label: "Servicios", path: "/servicios" },
+  { id: "linkedin", label: "Linkedin", path: "/linkedin" },
+  { id: "whatsapp", label: "Whatsapp", path: "/whatsapp" },
+];
 
-  // Sincronizar tema desde localStorage al montar el componente
+const iconMap = {
+  inicio: IconExplore,
+  yo: IconsMe,
+  proyectos: IconProjects,
+  stack: IconStack,
+  servicios: IconServices,
+  whatsapp: IconWhatsapp,
+  linkedin: IconLinkedin,
+};
+
+export default function AnimatedTabs() {
+  const [activeTab, setActiveTab] = useState(tabs[0].id); // SSR estable
+  const [isMounted, setIsMounted] = useState(false);
+  
+  // Referencia al contenedor principal del contenido.
+  // Asegúrate de que en tu layout Astro el contenido principal esté dentro de un <main id="main-content"> o similar.
+  const mainContentRef = useRef(null);
+
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme); // Actualiza el estado con el tema guardado
-    updateThemeClass(savedTheme); // Asegura que la clase correcta esté aplicada
+    setIsMounted(true);
+
+    // Al montar, actualizamos la pestaña activa según localStorage o URL
+    const savedTab = typeof window !== 'undefined' ? localStorage.getItem('activeTab') : null;
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+    const currentTab = tabs.find(tab => tab.path === currentPath);
+
+    if (savedTab && tabs.some(tab => tab.id === savedTab)) {
+      setActiveTab(savedTab);
+    } else if (currentTab) {
+      setActiveTab(currentTab.id);
+    }
   }, []);
 
-  // Función para actualizar la clase del tema en el DOM
-  const updateThemeClass = (theme) => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+  useEffect(() => {
+    if (typeof window !== "undefined" && activeTab) {
+      localStorage.setItem("activeTab", activeTab);
+    }
+  }, [activeTab]);
+
+  const handleTabClick = async (e, tab) => {
+    e.preventDefault(); // Evitamos la navegación completa
+    setActiveTab(tab.id);
+
+    // Actualizamos la URL sin recargar la página
+    window.history.pushState(null, '', tab.path);
+
+    // Obtenemos el nuevo contenido vía fetch
+    const response = await fetch(tab.path, {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
+    const htmlText = await response.text();
+    console.log(response)
+
+    // Parseamos el HTML obtenido para extraer el contenido principal
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+
+    // Suponiendo que tu contenido principal está dentro de <main id="main-content">
+    const newMainContent = doc.querySelector('#main-content');
+    const currentMainContent = document.querySelector('#main-content');
+
+    if (newMainContent && currentMainContent) {
+      // Reemplazamos el contenido actual por el nuevo
+      currentMainContent.innerHTML = newMainContent.innerHTML;
     }
   };
 
-  // Cambiar entre temas
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme); // Actualiza el estado
-    localStorage.setItem("theme", newTheme); // Guarda el tema en localStorage
-    updateThemeClass(newTheme); // Actualiza la clase en el DOM
-  };
+  // Si aún no se ha montado, renderiza el estado SSR inicial (primera pestaña activa)
+  // if (!isMounted) {
+  //   return (
+  //     <nav className="fixed bottom-0 left-0 right-0 border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-5 last:pr-5 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
+  //       <ul className="no-scrollbar flex items-center justify-center text-center gap-8">
+  //         {tabs.map((tab, index) => {
+  //           const IconComponent = iconMap[tab.id.toLowerCase()];
+  //           const isActive = (index === 0);
+  //           return (
+  //             <li
+  //               key={tab.id}
+  //               className={`relative rounded-full px-3 py-1.5 font-medium text-xs text-[#8a8a8a] gap-1 transition focus-visible:outline-2 ${
+  //                 isActive ? "text-[#4a4a4a] dark:text-white" : ""
+  //               }`}
+  //               style={{ WebkitTapHighlightColor: "transparent" }}
+  //             >
+  //               <div className="flex flex-col items-center gap-1">
+  //                 {isActive && (
+  //                   <motion.span
+  //                     layoutId="blend"
+  //                     className="absolute inset-0 z-10 mix-blend-darken bg-[#eff3f4] rounded-lg border border-[#e1e1e3] dark:border-[#393939] dark:bg-[#2c2c2c] dark:mix-blend-lighten"
+  //                   />
+  //                 )}
+  //                 <div className={`${isActive ? "text-white" : ""}`}>
+  //                   <IconComponent />
+  //                 </div>
+  //                 {tab.label}
+  //               </div>
+  //             </li>
+  //           );
+  //         })}
+  //       </ul>
+  //     </nav>
+  //   );
+  // }
 
   return (
-    <motion.div
-      // Contenedor principal con animación del fondo
-      className="min-h-screen flex items-center justify-center transition-colors duration-500"
-      style={{
-        backgroundColor: theme === "dark" ? "#1a202c" : "#f7fafc", // Cambia el fondo
-        color: theme === "dark" ? "#ffffff" : "#000000", // Cambia el color del texto
-      }}
-    >
-      <motion.button
-        onClick={toggleTheme}
-        className="relative flex items-center w-20 h-9 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors duration-500"
-        whileTap={{ scale: 0.9 }}
-      >
-        {/* Ícono del toggle */}
-        <motion.div
-          className="absolute flex items-center justify-center w-10 h-10"
-          initial={{
-            left: theme === "dark" ? "4px" : "calc(100% - 44px)",
-          }}
-          animate={{
-            left: theme === "dark" ? "4px" : "calc(100% - 44px)",
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 500,
-            damping: 30,
-          }}
-        >
-          {theme === "dark" ? (
-            <motion.svg
-              key="moon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              className="text-blue-400"
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t text-xs font-semibold text-[#616161] overflow-x-auto overflow-hidden flex gap-8 items-center no-scrollbar py-4 first:pl-6 last:pr-6 [&>li]:flex [&>li]:flex-col [&>li]:items-center [&>li]:gap-1 [&>li>svg]:text-[#8a8a8a] [&>li]:p-1.5 [&>li]:px-2.5 dark:bg-[#1c1c1c] dark:border-none">
+      <ul className="no-scrollbar flex items-center justify-center text-center gap-8">
+        {tabs.map((tab) => {
+          const IconComponent = iconMap[tab.id.toLowerCase()];
+          const isActive = activeTab === tab.id;
+          return (
+            <li
+              key={tab.id}
+              onClick={(e) => handleTabClick(e, tab)}
+              className={`relative rounded-full px-2 py-1.5 font-medium text-xs text-[#8a8a8a] gap-1 transition focus-visible:outline-2 ${
+                isActive ? "text-[#000000] dark:text-white" : ""
+              }dark:text-[#616161]`}
+              style={{ WebkitTapHighlightColor: "transparent" }}
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-            </motion.svg>
-          ) : (
-            <motion.svg
-              key="sun"
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              className="text-yellow-400"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-            </motion.svg>
-          )}
-        </motion.div>
-      </motion.button>
-    </motion.div>
+              <a href={tab.path} className="flex flex-col items-center gap-1">
+                <AnimatePresence mode="popLayout">
+                  {isActive && (
+                    <motion.span
+                      key="active-bg"
+                      layoutId="blend"
+                      initial={{ opacity: 0 }}
+                      animate={{ 
+                        opacity: 1, 
+                        // scale: 1,
+                        transition: { 
+                          duration: .2,
+                          ease: "easeInOut"
+                        }
+                      }}
+                      exit={{ 
+                        opacity: 0, 
+                        // scale: 1,
+                        transition: { 
+                          duration: .2,
+                          ease: "easeInOut"
+                        }
+                      }}
+                      className="absolute inset-0 z-10 mix-blend-darken bg-[#eff3f4] rounded-lg border  border-[#e1e1e3] dark:border-[#393939] dark:bg-[#2c2c2c] dark:mix-blend-lighten"
+                    />
+                  )}
+                </AnimatePresence>
+                <div className={`flex flex-col gap-1 items-center justify-center${isActive ? "text-[#000000] dark:text-white" : "text-[#616161] dark:text-[#616161]"}`}>
+                  <IconComponent />
+                  <p className="">
+                    {tab.label}
+                  </p>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
