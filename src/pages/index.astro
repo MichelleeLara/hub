@@ -7,9 +7,12 @@ import Figma from '../icons/Figma.astro';
 import React from '../icons/React.astro';
 import NextJS from '../icons/NextJS.astro';
 import Tailwind from '../icons/Tailwind.astro';
+import IconAstro from '../icons/IconAstro.astro';
+import Technologies from '../components/Technologies.astro';
 // import Navbar from '../components/Navbar'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+console.log(Astro)
 ---
 
 <Layout>
@@ -64,59 +67,15 @@ import Tailwind from '../icons/Tailwind.astro';
 					</p>	
 				</div>
 
-				<article class="flex flex-col gap-2">
+				<article class="flex flex-col gap-3">
 					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Frontend</h3>
-					
-					
-					
-					<!-- React -->
-					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
-						<div class="icon-contaisner ">
-							<div class="w-10 h-10 flex items-center justify-center text-[#087ea4] relative z-10">
-								<React/>
-							</div>
-						  <div class="w-36 absolute text-[#087ea4] top-[-2rem] left-[-2rem] blur-[40px]">
-							<React/>
-						  </div>
-						</div>
-						<div class="content">
-						  <h4 class="font-semibold text-secondary text-sm">React</h4>
-						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
-						</div>
+					<div class="grid grid-cols-1 gap-4 xs:grid-cols-2 ">
+						<Technologies Title="React" Description="Librería" Icon={React} colors="#087ea4"/>
+						<Technologies Title="NextJS" Description="Framework" Icon={NextJS} colors=""/>
+						<Technologies Title="Astro" Description="Framework" Icon={IconAstro} colors=""/>
+						<Technologies Title="Tailwind" Description="Framework CSS" Icon={Tailwind} colors=""/>
+						<Technologies Title="Figma" Description="Herramienta de diseño" Icon={Figma} colors=""/>
 					</div>
-
-					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
-						<div class="icon-contaisner ">
-							<div class="w-7 h-7 flex items-center justify-center text-[#087ea4] fill-white relative z-10">
-								<NextJS/>
-							</div>
-						  <div class="w-36 absolute fill-gray-300 top-[-2rem] left-[-2rem] blur-[40px]">
-							<NextJS/>
-						  </div>
-						</div>
-						<div class="content">
-						  <h4 class="font-semibold text-secondary text-sm">Next JS</h4>
-						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
-						</div>
-					</div>
-
-					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
-						<div class="icon-contaisner ">
-							<div class="w-7 flex items-center justify-center text-[#087ea4] fill-white relative z-10">
-								<Tailwind/>
-							</div>
-						  <div class="w-36 absolute fill-gray-300 top-[-2rem] left-[-2rem] blur-[40px]">
-							<Tailwind/>
-						  </div>
-						</div>
-						<div class="content">
-						  <h4 class="font-semibold text-secondary text-sm">Tailwind</h4>
-						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
-						</div>
-					</div>
-
-
-					
 				</article>
 				<article class="flex flex-col gap-2">
 					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Nube</h3>
@@ -125,13 +84,13 @@ import Tailwind from '../icons/Tailwind.astro';
 					
 					
 					<div class="rounded-xl flex gap-3 items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
-						<div class="icon-container ">
+						<div class="bg-resd-500 min-w-[40px] max-w-[40px]">
 						  <img src="/Figma_Icon.svg" alt="Figma" class="icon w-10 z-10 relative">
 						  <div class="w-36 absolute top-[-2rem] left-[-2rem] blur-[40px]">
 							<Figma/>
 						  </div>
 						</div>
-						<div class="content">
+						<div class="bg-red-500">
 						  <h4 class="font-semibold text-secondary text-sm">Figma</h4>
 						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
 						</div>
