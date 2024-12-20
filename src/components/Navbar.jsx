@@ -7,28 +7,35 @@ export default function ThemeToggle() {
   // Sincronizar tema desde localStorage al montar el componente
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-    // Aplicar la clase inicial de tema al body para evitar re-render global
-    document.body.className = savedTheme;
+    setTheme(savedTheme); // Actualiza el estado con el tema guardado
+    updateThemeClass(savedTheme); // Asegura que la clase correcta esté aplicada
   }, []);
+
+  // Función para actualizar la clase del tema en el DOM
+  const updateThemeClass = (theme) => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
 
   // Cambiar entre temas
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme); // Actualiza el estado
-    localStorage.setItem("theme", newTheme);
-    document.body.className = newTheme; // Cambiar clase directamente
+    localStorage.setItem("theme", newTheme); // Guarda el tema en localStorage
+    updateThemeClass(newTheme); // Actualiza la clase en el DOM
   };
 
   return (
     <motion.div
-      // Fondo animado de la aplicación
-      className="min-h-screen flex items-center justify-center"
-      initial={{ opacity: 1 }}
-      animate={{
-        backgroundColor: theme === "dark" ? "#1a202c" : "#f7fafc",
+      // Contenedor principal con animación del fondo
+      className="min-h-screen flex items-center justify-center transition-colors duration-500"
+      style={{
+        backgroundColor: theme === "dark" ? "#1a202c" : "#f7fafc", // Cambia el fondo
+        color: theme === "dark" ? "#ffffff" : "#000000", // Cambia el color del texto
       }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <motion.button
         onClick={toggleTheme}
