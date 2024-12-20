@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ThemeToggle() {
   const [theme, setTheme] = useState("dark");
 
-  // Sincronizar tema desde localStorage al montar el componente (solo en el cliente)
+  // Sincronizar tema desde localStorage al montar el componente
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme); // Actualiza el estado con el tema guardado
@@ -22,21 +22,22 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex items-center w-20 h-9 rounded-full bg-[#dadada83] dark:bg-[#2c2c2c] transition-colors duration-500 "
+      className="relative flex items-center w-20 h-9 rounded-full bg-[#dadada83] dark:bg-[#2c2c2c] transition-colors duration-500"
     >
-      {/* Contenedor animado del ícono */}
       <motion.div
         className="absolute flex items-center justify-center w-10 h-10"
         initial={{
           left: theme === "dark" ? "4px" : "calc(100% - 44px)",
+          scale: 1,
         }}
         animate={{
           left: theme === "dark" ? "4px" : "calc(100% - 44px)",
+          scale: [1, 1.2, 1], // Animación de rebote leve
         }}
         transition={{
           type: "spring",
           stiffness: 500,
-          damping: 30,
+          damping: 25,
         }}
       >
         <AnimatePresence mode="wait">
@@ -52,10 +53,10 @@ export default function ThemeToggle() {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{ opacity: 1, rotate: 360 }}
+              exit={{ opacity: 0, rotate: -360 }}
+              transition={{ duration: 0.5 }}
               className="text-[#7e48ea]"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -69,10 +70,10 @@ export default function ThemeToggle() {
               height="18"
               viewBox="0 0 24 24"
               fill="currentColor"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{ opacity: 1, rotate: 360 }}
+              exit={{ opacity: 0, rotate: -360 }}
+              transition={{ duration: 0.5 }}
               className="text-yellow-500"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
