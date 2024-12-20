@@ -1,29 +1,38 @@
+--- 
+const { Title, Description, colors } = Astro.props;
 ---
-const { Title, Description, colors } = Astro.props
-console.log(colors)
----
-<div class="rounded-xl flex  gap-1 items-start py-4 px-4 justify-between bg-[#1a1a1a] overflow-hidden relative ">
-    <div class="flex flex-col gap-1  items-start">
-        <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-start">
-            <div class=`w-7 flex items-center justify-center text-[${colors}] fill-white relative z-10` style={`color:${colors}`}>
-                <slot name='icon'/>
-            </div>
-          <div class={`w-48 left-[-2rem] top-[-4rem] absolute blur-[50px]`} style={`${colors === '' ? '' : `fill:${colors}; color:${colors};`}`} >
-            <slot name='icon'/>
-          </div>
+<div class="rounded-xl flex gap-1 items-start py-4 px-4 justify-between bg-[#1a1a1a] overflow-hidden relative">
+  <div class="flex flex-col gap-1 items-start">
+    {/* Contenedor del Ícono */}
+    <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-start relative">
+      {/* Ícono Principal */}
+      <div
+        class={`w-7 flex items-center justify-center text-${colors} fill-white z-10`}
+        style={`color: ${colors}`}
+      >
+        <slot name="icon" />
+      </div>
+
+      {/* Fondo Borroso del Ícono */}
+      {colors && (
+        <div
+          class="w-48 absolute left-[-2rem] top-[-4rem] blur-[20px]"
+          style={`fill: ${colors}; color: ${colors}`}
+        >
+          <slot name="icon" />
         </div>
-        
-        <div class="relative z-30 text-start flex flex-col gap-0.5">
-            <h4 class="font-semibold text-secondary text-sm">{Title}</h4>
-            <p class="text-xs text-terteary font-medium">{Description}</p>
-        </div> 
-    </div>  
-    <div class="flex items-center gap-1">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" color="#7e48ea" fill="none">
-            <path d="M21.9999 12C21.9999 17.5228 17.5228 22 11.9999 22C6.47709 22 1.99994 17.5228 1.99994 12C1.99994 6.47715 6.47709 2 11.9999 2C17.5228 2 21.9999 6.47715 21.9999 12Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-            <path d="M14.9999 9L7.99994 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            <path d="M9.99994 8.11274C9.99994 8.11274 14.8287 7.70569 15.5615 8.43847C16.2943 9.17125 15.8872 14 15.8872 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg> -->
-        <p class="text-[10px] text-terteary font-medium max-w-[100px] underline">¿Cómo las ocupo?</p>
+      )}
     </div>
+
+    {/* Contenedor de Texto */}
+    <div class="relative z-30 text-start flex flex-col gap-0.5">
+      <h4 class="font-semibold text-secondary text-sm">{Title}</h4>
+      <p class="text-xs text-terteary font-medium">{Description}</p>
+    </div>
+  </div>
+
+  {/* Sección de Enlace */}
+  <div class="flex items-center gap-1">
+    <p class="text-[10px] text-terteary font-medium max-w-[100px] underline">¿Cómo las ocupo?</p>
+  </div>
 </div>
