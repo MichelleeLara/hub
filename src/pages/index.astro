@@ -70,11 +70,28 @@ console.log(Astro)
 				<article class="flex flex-col gap-3">
 					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Frontend</h3>
 					<div class="grid grid-cols-1 gap-4 xs:grid-cols-2 ">
-						<Technologies Title="React" Description="Librería" Icon={React} colors="#087ea4"/>
-						<Technologies Title="NextJS" Description="Framework" Icon={NextJS} colors=""/>
-						<Technologies Title="Astro" Description="Framework" Icon={IconAstro} colors=""/>
-						<Technologies Title="Tailwind" Description="Framework CSS" Icon={Tailwind} colors=""/>
-						<Technologies Title="Figma" Description="Herramienta de diseño" Icon={Figma} colors=""/>
+						<Technologies Title="React" Description="Librería"  colors="#087ea4"/>
+						<Technologies Title="NextJS" Description="Framework" colors=""/>
+						<Technologies Title="Astro" Description="Framework" colors=""/>
+						<Technologies Title="React" Description="Framework CSS" colors="">
+							<React slot='icon' />
+						</Technologies>
+						<Technologies Title="NextJS" Description="Framework CSS" colors="">
+							<NextJS slot='icon' />
+						</Technologies>
+						<Technologies Title="IconAstro" Description="Framework CSS" colors="">
+							<IconAstro slot='icon' />
+						</Technologies>
+						<Technologies Title="Tailwind" Description="Framework CSS" colors="">
+							<Tailwind slot='icon' />
+						</Technologies>
+						<Technologies Title="Tailwind" Description="Framework CSS" colors="">
+							<Tailwind slot='icon' />
+						</Technologies>
+						<Technologies Title="Figma" Description="Framework CSS" colors="">
+							<Figma slot='icon' />
+						</Technologies>
+						<Technologies Title="Figma" Description="Herramienta de diseño" colors=""/>
 					</div>
 				</article>
 				<article class="flex flex-col gap-2">
