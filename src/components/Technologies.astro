@@ -5,7 +5,7 @@ console.log(colors)
 <div class="rounded-xl flex  gap-1 items-start py-4 px-4 justify-between bg-[#1a1a1a] overflow-hidden relative ">
     <div class="flex flex-col gap-1  items-start">
         <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-start">
-            <div class=`w-7 flex items-center justify-center text-[${colors}] fill-white relative z-10` style={`color:${colors}`}>
+            <div class=`w-7 flex items-center justify-center text-[${colors}] fill-white relative z-[100]` style={`color:${colors}`}>
                 <slot name='icon'/>
             </div>
           <div class={`w-32 absolute blur-[38px]`} style={`${colors === '' ? '' : `fill:${colors}; color:${colors};`}`} >
