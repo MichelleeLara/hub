@@ -8,7 +8,7 @@ console.log(colors)
             <div class=`w-7 flex items-center justify-center text-[${colors}] fill-white relative z-10` style={`color:${colors}`}>
                 <slot name='icon'/>
             </div>
-          <div class={`w-10 right-0 top-0 absolute blur-[38spx]`} style={`${colors === '' ? '' : `fill:${colors}; color:${colors};`}`} >
+          <div class={`w-48 left-[-2rem] top-[-4rem] absolute blur-[40px]`} style={`${colors === '' ? '' : `fill:${colors}; color:${colors};`}`} >
             <slot name='icon'/>
           </div>
         </div>
