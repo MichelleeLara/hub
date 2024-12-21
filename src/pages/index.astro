@@ -4,10 +4,19 @@ import Layout from '../layouts/Layout.astro';
 import { AnimateFragments } from '../components/Hero'
 import Jobs from '../components/Jobs'
 import Figma from '../icons/Figma.astro';
+import FIgmaBlur from '../icons/FIgmaBlur.astro';
 import React from '../icons/React.astro';
+import ReactBlur from '../icons/ReactBlur.astro';
 import NextJS from '../icons/NextJS.astro';
+import NextJSBlur from '../icons/NextJSBlur.astro';
 import Tailwind from '../icons/Tailwind.astro';
+import TailwindBlur from '../icons/TailwindBlur.astro';
 import IconAstro from '../icons/IconAstro.astro';
+import IconAstroBlur from '../icons/IconAstroBlur.astro';
+import Aws from '../icons/Aws.astro';
+import AwsBlur from '../icons/AwsBlur.astro';
+import Google from '../icons/Google.astro';
+import GoogleBlur from '../icons/GoogleBlur.astro';
 import Technologies from '../components/Technologies.astro';
 // import Navbar from '../components/Navbar'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -72,18 +81,23 @@ console.log(Astro)
 					<div class="grid grid-cols-1 gap-4 xs:grid-cols-2 ">
 						<Technologies Title="React" Description="Librería" colors="#087ea4">
 							<React slot='icon' />
+							<ReactBlur slot='icon-blur' />
 						</Technologies>
 						<Technologies Title="NextJS" Description="Framework" colors="">
 							<NextJS slot='icon' />
+							<NextJSBlur slot='icon-blur' />
 						</Technologies>
 						<Technologies Title="Astro" Description="Framework" colors="">
 							<IconAstro slot='icon' />
+							<IconAstroBlur slot='icon-blur' />
 						</Technologies>
 						<Technologies Title="Tailwind" Description="Framework CSS" colors="">
 							<Tailwind slot='icon' />
+							<TailwindBlur slot='icon-blur' />
 						</Technologies>
 						<Technologies Title="Figma" Description="Diseño" colors="">
 							<Figma slot='icon' />
+							<FIgmaBlur slot='icon-blur' />
 						</Technologies>
 					</div>
 				</article>
@@ -92,34 +106,39 @@ console.log(Astro)
 					<Technologies Title="Node" Description="Diseño" colors="">
 						<Figma slot='icon' />
 					</Technologies>
-					<Technologies Title="Sql" Description="Diseño" colors="">
+					<Technologies Title="Sql" Description="Base de datos" colors="">
 						<Figma slot='icon' />
 					</Technologies>
-					<Technologies Title="Mongo DB" Description="Diseño" colors="">
+					<Technologies Title="Mongo DB" Description="Base de datos" colors="">
 						<Figma slot='icon' />
 					</Technologies>
-				
-					
 				</article>
 				<article class="flex flex-col gap-2">
-					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Diseño</h3>
-					
-					
-					
-					
-					<div class="rounded-xl flex items-center py-4 px-2 bg-[#1a1a1a] overflow-hidden relative">
-						<div class="icon-container ">
-						  <img src="/Figma_Icon.svg" alt="Figma" class="icon w-14 z-10 relative">
-						  <div class="w-36 absolute top-[-2rem] left-[-2rem] blur-[40px]">
-							<Figma/>
-						  </div>
-						</div>
-						<div class="content">
-						  <h4 class="font-semibold text-secondary text-sm">Figma</h4>
-						  <p class="text-xs text-terteary font-medium">Integrate your personal/team files seamlessly.</p>
-						</div>
-					  </div>
-					
+					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Cloud</h3>
+					<Technologies Title="AWS" Description="Diseño" colors="">
+						<Aws slot='icon' />
+						<AwsBlur slot='icon-blur' />
+					</Technologies>
+				
+					<Technologies Title="Google Cloud" Description="Diseño" colors="">
+						<Google slot='icon' />
+						<GoogleBlur slot='icon-blur' />
+					</Technologies>
+				</article>
+				<article class="flex flex-col gap-2">
+					<h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">Colaboración y Productividad</h3>
+					<Technologies Title="Notion" Description="Gestión" colors="">
+						<Figma slot='icon' />
+					</Technologies>
+					<Technologies Title="Git" Description="Control de versiones" colors="">
+						<Figma slot='icon' />
+					</Technologies>
+					<Technologies Title="Gtihub" Description="Control de versiones" colors="">
+						<Figma slot='icon' />
+					</Technologies>
+					<Technologies Title="Postman" Description="Otros" colors="">
+						<Figma slot='icon' />
+					</Technologies>
 				</article>
 
 			</div>

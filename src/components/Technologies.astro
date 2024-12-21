@@ -1,10 +1,10 @@
 --- 
 const { Title, Description, colors } = Astro.props;
 ---
-<div class="rounded-xl flex gap-1 items-start py-4 px-4 justify-between bg-[#1a1a1a] overflow-hidden relative">
-  <div class="flex flex-col gap-1 items-start">
+<div class="rounded-xl flex gap-1 items-center py-4 px-4 justify-center bg-[#1a1a1a] overflow-hidden relative">
+  <div class="flex flex-col gap-1 items-center justify-center">
     {/* Contenedor del Ícono */}
-    <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-start relative">
+    <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-center relative">
       {/* Ícono Principal */}
       <div
         class={`w-7 flex items-center justify-center text-${colors} fill-white z-10`}
@@ -14,28 +14,24 @@ const { Title, Description, colors } = Astro.props;
       </div>
 
       {/* Fondo Borroso del Ícono */}
-<!-- 
+
         <div
-          class="w-48 absolute left-[-2rem] top-[-4rem] blur-[40px]"
-          style={`fill: ${colors}; color: ${colors}`}
+          class="w-[20rem] absolute top-ss[-8rem]"
         >
-          <slot name="icon" />
-        </div> -->
+          <slot name="icon-blur" />
+        </div>
 
     </div>
 
     {/* Contenedor de Texto */}
-    <div class="relative z-30 text-start flex flex-col gap-0.5">
+    <div class="relative z-30 text-center flex flex-col gap-0.5">
       <h4 class="font-semibold text-secondary text-sm">{Title}</h4>
       <p class="text-xs text-terteary font-medium">{Description}</p>
     </div>
   </div>
 
-  {/* Sección de Enlace */}
-  <div class="flex items-center gap-1">
-    <p class="text-[10px] text-terteary font-medium max-w-[100px] underline">¿Cómo las ocupo?</p>
-  </div>
 </div>
+
 
 <!-- <div class="rounded-xl flex  gap-1 items-start py-4 px-4 justify-between bg-[#1a1a1a] overflow-hidden relative ">
     <div class="flex flex-col gap-1  items-start">
