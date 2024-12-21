@@ -49,7 +49,7 @@ const getPosition = (position: string) => {
 
     
     <div class="absolute w-full">
-      {colorArray.map((colorObj, index) => {
+      <!-- {colorArray.map((colorObj, index) => {
         const position = colorObj.position || defaultPositions[index] || 'center';
         return (
           <div
@@ -60,7 +60,10 @@ const getPosition = (position: string) => {
             `}
           />
         );
-      })}
+      })} -->
+      <div class="blur-shadow">
+        <slot name="icon"/>
+      </div>
     </div>
     
     <div class="relative z-30 text-center flex flex-col gap-0.5">
@@ -95,8 +98,8 @@ const getPosition = (position: string) => {
 
   .blur-shadow {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 12rem;
+    top: -5rem;
     background: var(--shadow-color);
     filter: blur(40px);
     /* opacity: 0.3; */
