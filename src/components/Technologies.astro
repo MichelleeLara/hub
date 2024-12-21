@@ -4,33 +4,35 @@ interface Props {
   Description: string;
   colors?: Array<{
     color: string;
-    position?: string; // top-left, top-right, bottom-left, bottom-right, center
+    position?: string; // Ahora incluye top-center y bottom-center
   }> | string;
 }
 
 const { Title, Description, colors = [] } = Astro.props;
 
-// Convertir colors a array de objetos si es string o array simple
 const colorArray = Array.isArray(colors) 
   ? colors.map(c => typeof c === 'string' ? { color: c } : c)
   : typeof colors === 'string' 
     ? [{ color: colors }] 
     : [];
 
-// Posiciones predeterminadas para hasta 4 colores
 const defaultPositions = [
   'top-left',
+  'top-center',
   'top-right',
   'bottom-left',
+  'bottom-center',
   'bottom-right'
 ];
 
 const getPosition = (position: string) => {
   const positions = {
-    'top-left': 'translate(-50%, -50%)',
-    'top-right': 'translate(50%, -50%)',
-    'bottom-left': 'translate(-50%, 50%)',
-    'bottom-right': 'translate(50%, 50%)',
+    'top-left': 'translate(-70%, -70%)',
+    'top-center': 'translate(0%, -70%)',
+    'top-right': 'translate(70%, -70%)',
+    'bottom-left': 'translate(-70%, 70%)',
+    'bottom-center': 'translate(0%, 70%)',
+    'bottom-right': 'translate(70%, 70%)',
     'center': 'translate(0%, 0%)'
   };
   return positions[position] || 'translate(0, 0)';
@@ -45,7 +47,21 @@ const getPosition = (position: string) => {
       </div>
     </div>
 
-   
+    
+    <div class="absolute w-full">
+      {colorArray.map((colorObj, index) => {
+        const position = colorObj.position || defaultPositions[index] || 'center';
+        return (
+          <div
+            class={`blur-shadow ${position}`}
+            style={`
+              --shadow-color: ${colorObj.color};
+              --shadow-transform: ${getPosition(position)};
+            `}
+          />
+        );
+      })}
+    </div>
     
     <div class="relative z-30 text-center flex flex-col gap-0.5">
       <h4 class="font-semibold text-secondary text-sm">{Title}</h4>
@@ -60,8 +76,8 @@ const getPosition = (position: string) => {
   }
 
   .icon-container {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     position: relative;
     display: grid;
     place-items: center;
@@ -83,31 +99,42 @@ const getPosition = (position: string) => {
     height: 50px;
     background: var(--shadow-color);
     filter: blur(40px);
-    /* opacity: 0.2; */
+    /* opacity: 0.3; */
     border-radius: 50%;
     transform: var(--shadow-transform);
-    /* transition: opacity 0.3s ease; */
+    transition: all 0.3s ease;
+    /* mix-blend-mode: screen; */
   }
 
-  /* Posicionamiento específico para cada esquina */
+  /* Posicionamiento actualizado incluyendo posiciones centrales */
   .blur-shadow.top-left {
-    top: 45%;
-    left: 45%;
+    top: 40%;
+    left: 40%;
+  }
+
+  .blur-shadow.top-center {
+    top: 40%;
+    left: 50%;
   }
 
   .blur-shadow.top-right {
-    top: 45%;
-    left: 55%;
+    top: 40%;
+    left: 60%;
   }
 
   .blur-shadow.bottom-left {
-    top: 55%;
-    left: 45%;
+    top: 60%;
+    left: 40%;
+  }
+
+  .blur-shadow.bottom-center {
+    top: 60%;
+    left: 50%;
   }
 
   .blur-shadow.bottom-right {
-    top: 55%;
-    left: 55%;
+    top: 60%;
+    left: 60%;
   }
 
   .blur-shadow.center {
@@ -117,6 +144,25 @@ const getPosition = (position: string) => {
 
   /* Hover effect */
   .tech-card:hover .blur-shadow {
-    /* opacity: 0.3; */
+    /* opacity: 0.4; */
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Animación sutil */
+  @keyframes pulseGlow {
+    0%, 100% { transform: var(--shadow-transform) scale(1); }
+    50% { transform: var(--shadow-transform) scale(1.1); }
+  }
+
+  .blur-shadow {
+    animation: pulseGlow 4s ease-in-out infinite;
+    animation-delay: calc(var(--index, 0) * 0.5s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blur-shadow {
+      animation: none;
+    }
   }
 </style>
