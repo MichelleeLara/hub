@@ -1,57 +1,135 @@
---- 
-const { Title, Description, colors } = Astro.props;
 ---
-<div class="rounded-xl flex gap-1 items-center py-4 px-4 justify-center bg-[#1a1a1a] overflow-hidden relative">
+interface Props {
+  Title: string;
+  Description: string;
+  colors?: Array<{
+    color: string;
+    position?: string; // top-left, top-right, bottom-left, bottom-right, center
+  }> | string;
+}
+
+const { Title, Description, colors = [] } = Astro.props;
+
+// Convertir colors a array de objetos si es string o array simple
+const colorArray = Array.isArray(colors) 
+  ? colors.map(c => typeof c === 'string' ? { color: c } : c)
+  : typeof colors === 'string' 
+    ? [{ color: colors }] 
+    : [];
+
+// Posiciones predeterminadas para hasta 4 colores
+const defaultPositions = [
+  'top-left',
+  'top-right',
+  'bottom-left',
+  'bottom-right'
+];
+
+const getPosition = (position: string) => {
+  const positions = {
+    'top-left': 'translate(-50%, -50%)',
+    'top-right': 'translate(50%, -50%)',
+    'bottom-left': 'translate(-50%, 50%)',
+    'bottom-right': 'translate(50%, 50%)',
+    'center': 'translate(0%, 0%)'
+  };
+  return positions[position] || 'translate(0, 0)';
+};
+---
+
+<div class="tech-card rounded-xl flex gap-1 items-center py-4 px-4 justify-center bg-[#1a1a1a] overflow-hidden relative">
   <div class="flex flex-col gap-1 items-center justify-center">
-    {/* Contenedor del Ícono */}
-    <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-center relative">
-      {/* Ícono Principal */}
-      <div
-        class={`w-7 flex items-center justify-center text-${colors} fill-white z-10`}
-        style={`color: ${colors}`}
-      >
+    <div class="icon-container">
+      <div class="icon-wrapper">
         <slot name="icon" />
       </div>
-
-      {/* Fondo Borroso del Ícono */}
-
-        <div
-          class="w-[20rem] absolute top-ss[-8rem]"
-        >
-          <slot name="icon-blur" />
-        </div>
-
     </div>
 
-    {/* Contenedor de Texto */}
+    <div class="absolute w-full">
+      {colorArray.map((colorObj, index) => {
+        const position = colorObj.position || defaultPositions[index] || 'center';
+        return (
+          <div
+            class={`blur-shadow ${position}`}
+            style={`
+              --shadow-color: ${colorObj.color};
+              --shadow-transform: ${getPosition(position)};
+            `}
+          />
+        );
+      })}
+    </div>
+    
     <div class="relative z-30 text-center flex flex-col gap-0.5">
       <h4 class="font-semibold text-secondary text-sm">{Title}</h4>
       <p class="text-xs text-terteary font-medium">{Description}</p>
     </div>
   </div>
-
 </div>
 
+<style>
+  .tech-card {
+    container-type: inline-size;
+  }
 
-<!-- <div class="rounded-xl flex  gap-1 items-start py-4 px-4 justify-between bg-[#1a1a1a] overflow-hidden relative ">
-    <div class="flex flex-col gap-1  items-start">
-        <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] flex items-center justify-start">
-            <div class=`w-7 flex items-center justify-center text-[${colors}] fill-white relative z-10` style={`color:${colors}`}>
-                <slot name='icon'/>
-            </div>
-          <div class={`w-48 left-[-2rem] top-[-4rem] absolute blur-[50px]`} style={`${colors === '' ? '' : `fill:${colors}; color:${colors};`}`} >
-            <slot name='icon'/>
-          </div>
-        </div>
-        
-        <div class="relative z-30 text-start flex flex-col gap-0.5">
-            <h4 class="font-semibold text-secondary text-sm">{Title}</h4>
-            <p class="text-xs text-terteary font-medium">{Description}</p>
-        </div> 
-    </div>  
-    <div class="flex items-center gap-1">
-       
-        
-        <p class="text-[10px] text-terteary font-medium max-w-[100px] underline">¿Cómo las ocupo?</p>
-    </div>
-</div> -->
+  .icon-container {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .icon-wrapper {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .blur-shadow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--shadow-color);
+    filter: blur(40px);
+    /* opacity: 0.2; */
+    border-radius: 50%;
+    transform: var(--shadow-transform);
+    /* transition: opacity 0.3s ease; */
+  }
+
+  /* Posicionamiento específico para cada esquina */
+  .blur-shadow.top-left {
+    top: 45%;
+    left: 45%;
+  }
+
+  .blur-shadow.top-right {
+    top: 45%;
+    left: 55%;
+  }
+
+  .blur-shadow.bottom-left {
+    top: 55%;
+    left: 45%;
+  }
+
+  .blur-shadow.bottom-right {
+    top: 55%;
+    left: 55%;
+  }
+
+  .blur-shadow.center {
+    top: 50%;
+    left: 50%;
+  }
+
+  /* Hover effect */
+  .tech-card:hover .blur-shadow {
+    /* opacity: 0.3; */
+  }
+</style>
