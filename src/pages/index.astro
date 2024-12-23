@@ -4,30 +4,20 @@ import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
 import Figma from "../icons/Figma.astro";
-import FIgmaBlur from "../icons/FIgmaBlur.astro";
 import React from "../icons/React.astro";
-import ReactBlur from "../icons/ReactBlur.astro";
 import NextJS from "../icons/NextJS.astro";
-import NextJSBlur from "../icons/NextJSBlur.astro";
-import Tailwind from "../icons/Tailwind.astro";
-import TailwindBlur from "../icons/TailwindBlur.astro";
 import IconAstro from "../icons/IconAstro.astro";
-import IconAstroBlur from "../icons/IconAstroBlur.astro";
 import Aws from "../icons/Aws.astro";
-import AwsBlur from "../icons/AwsBlur.astro";
 import Google from "../icons/Google.astro";
-import GoogleBlur from "../icons/GoogleBlur.astro";
 import Technologies from "../components/Technologies.astro";
-// import Navbar from '../components/Navbar'
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-console.log(Astro);
+import TS from "../icons/TS.astro";
+import Notion from "../icons/Notion.astro";
+import Git from "../icons/Git.astro";
+import Github from '../icons/Github.astro'
+import Postman from '../icons/Postman.astro'
 ---
 
 <Layout>
-  <!-- <head slot="head">
-		<title>Dark Mode in Astro</title>
-	</head> -->
   <main
     class="bg-white min-h-screen text-black dark:bg-[#161616] dark:text-gray-300 transition-colors duration-300 pb-32"
   >
@@ -96,40 +86,41 @@ console.log(Astro);
           </p>
         </div>
 
+        <!-- Frontend -->
         <article class="flex flex-col gap-3">
           <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
             Frontend
           </h3>
           <div class="grid grid-cols-1 gap-4 xs:grid-cols-2">
-            <Technologies
-              Title="Figma"
-              Description="Diseño"
-              colors={[
-                { color: "#F24E1E", position: "top-left" },
-                { color: "#FF7262", position: "top-right" },
-                { color: "#0ACF83", position: "bottom-left" },
-                { color: "#1abcfe", position: "bottom-center" },
-                { color: "#A259FF", position: "top-left" },
-              ]}
-            >
-              <Figma slot="icon" />
-            </Technologies>
-
             {/* Para React con un solo color */}
             <Technologies Title="React" Description="Librería" colors="#087ea4">
               <React slot="icon" />
+            </Technologies>
+
+            <!-- Next Js -->
+            <Technologies Title="NextJS" Description="Librería" colors="#8d8d8d">
+              <NextJS slot="icon" />
+            </Technologies>
+            
+            <!-- TypeScript -->
+            <Technologies Title="TypeScript" Description="Librería" colors="#087ea4">
+              <TS slot="icon" />
             </Technologies>
 
             {/* Para Astro con dos colores */}
             <Technologies
               Title="Astro"
               Description="Framework"
-              colors={[
-                { color: "#FF5D01", position: "bottom center" },
-                { color: "#fff", position: "top-center" },
-              ]}
             >
               <IconAstro slot="icon" />
+            </Technologies>
+
+            <!-- Figma -->
+            <Technologies
+                Title="Figma"
+                Description="Diseño"
+              >
+                <Figma slot="icon" />
             </Technologies>
           </div>
         </article>
@@ -155,10 +146,6 @@ console.log(Astro);
           <Technologies
             Title="Aws"
             Description="Ver mas"
-            colors={[
-              { color: "#fff", position: "top-left" },
-              { color: "#FF9900", position: "bottom-right" },
-            ]}
           >
             <Aws slot="icon" />
           </Technologies>
@@ -167,20 +154,8 @@ console.log(Astro);
           <Technologies
             Title="Google"
             Description="Ver mas"
-            colors={[
-              { color: "#34a853", position: "bottom-left" },
-              { color: "#5487db", position: "bottom-right" },
-              { color: "#fbbc05", position: "top-left" },
-              { color: "#e94434", position: "top-center" },
-            ]}
           >
             <Google slot="icon" />
-          </Technologies>
-      
-
-          <Technologies Title="Google Cloud" Description="Diseño" colors="">
-            <Google slot="icon" />
-            <GoogleBlur slot="icon-blur" />
           </Technologies>
         </article>
         <article class="flex flex-col gap-2">
@@ -188,24 +163,24 @@ console.log(Astro);
             Colaboración y Productividad
           </h3>
           <Technologies Title="Notion" Description="Gestión" colors="">
-            <Figma slot="icon" />
+            <Notion slot="icon" />
           </Technologies>
           <Technologies
             Title="Git"
             Description="Control de versiones"
             colors=""
           >
-            <Figma slot="icon" />
+            <Git slot="icon" />
           </Technologies>
           <Technologies
             Title="Gtihub"
             Description="Control de versiones"
             colors=""
           >
-            <Figma slot="icon" />
+            <Github slot="icon" />
           </Technologies>
           <Technologies Title="Postman" Description="Otros" colors="">
-            <Figma slot="icon" />
+            <Postman slot="icon" />
           </Technologies>
         </article>
       </div>
