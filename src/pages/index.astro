@@ -3,18 +3,18 @@ import ThemeToggle from "../components/Themetoggle";
 import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
-import Figma from "../icons/Figma.astro";
-import React from "../icons/React.astro";
-import NextJS from "../icons/NextJS.astro";
+import Technologies from "../components/Technologies";
+import {Figma, ReactIcon, NextJS, AstroIcon, TailwindIcon, TypeScriptIcon, AwsIcon, GoogleIcon, GitHubIcon, GitIcon, Postman, Notion} from '../icons/Icons'
 import IconAstro from "../icons/IconAstro.astro";
 import Aws from "../icons/Aws.astro";
 import Google from "../icons/Google.astro";
-import Technologies from "../components/Technologies.astro";
 import TS from "../icons/TS.astro";
 import Notion from "../icons/Notion.astro";
-import Git from "../icons/Git.astro";
-import Github from '../icons/Github.astro'
+
 import Postman from '../icons/Postman.astro'
+
+import TechFront from '../sections/TechFront'
+
 ---
 
 <Layout>
@@ -87,102 +87,54 @@ import Postman from '../icons/Postman.astro'
         </div>
 
         <!-- Frontend -->
+         <TechFront client:only="react" />
+        <!-- Cloud -->
         <article class="flex flex-col gap-3">
-          <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
-            Frontend
-          </h3>
-          <div class="grid grid-cols-1 gap-4 xs:grid-cols-2">
-            {/* Para React con un solo color */}
-            <Technologies Title="React" Description="Librería" colors="#087ea4">
-              <React slot="icon" />
-            </Technologies>
-
-            <!-- Next Js -->
-            <Technologies Title="NextJS" Description="Librería" colors="#8d8d8d">
-              <NextJS slot="icon" />
-            </Technologies>
-            
-            <!-- TypeScript -->
-            <Technologies Title="TypeScript" Description="Librería" colors="#087ea4">
-              <TS slot="icon" />
-            </Technologies>
-
-            {/* Para Astro con dos colores */}
-            <Technologies
-              Title="Astro"
-              Description="Framework"
-            >
-              <IconAstro slot="icon" />
-            </Technologies>
-
-            <!-- Figma -->
-            <Technologies
-                Title="Figma"
-                Description="Diseño"
-              >
-                <Figma slot="icon" />
-            </Technologies>
-          </div>
-        </article>
-        <!-- <article class="flex flex-col gap-2">
-          <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
-            Backend
-          </h3>
-          <Technologies Title="Node" Description="Diseño" colors="">
-            <Figma slot="icon" />
-          </Technologies>
-          <Technologies Title="Sql" Description="Base de datos" colors="">
-            <Figma slot="icon" />
-          </Technologies>
-          <Technologies Title="Mongo DB" Description="Base de datos" colors="">
-            <Figma slot="icon" />
-          </Technologies>
-        </article> -->
-        <article class="flex flex-col gap-2">
           <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
             Cloud
           </h3>
-          <!-- AWS -->
-          <Technologies
-            Title="Aws"
-            Description="Ver mas"
-          >
-            <Aws slot="icon" />
-          </Technologies>
-          
-          <!-- Google -->
-          <Technologies
-            Title="Google"
-            Description="Ver mas"
-          >
-            <Google slot="icon" />
-          </Technologies>
+          <div class="flex gap-5 overflow-scroll max-w-full">
+            {/* AWS */}
+            <Technologies Title="Aws" Description="Librería" colors={["#"]}>
+              <AwsIcon/>
+            </Technologies>
+            
+            <!-- Google cloud -->
+            <Technologies Title="Google cloud" Description="Librería" colors={[""]}>
+              <GoogleIcon />
+            </Technologies>
+           
+          </div>
         </article>
-        <article class="flex flex-col gap-2">
+        <!-- Frontend -->
+        <article class="flex flex-col gap-3">
           <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
-            Colaboración y Productividad
+            Colbaoración y productividad
           </h3>
-          <Technologies Title="Notion" Description="Gestión" colors="">
-            <Notion slot="icon" />
-          </Technologies>
-          <Technologies
-            Title="Git"
-            Description="Control de versiones"
-            colors=""
-          >
-            <Git slot="icon" />
-          </Technologies>
-          <Technologies
-            Title="Gtihub"
-            Description="Control de versiones"
-            colors=""
-          >
-            <Github slot="icon" />
-          </Technologies>
-          <Technologies Title="Postman" Description="Otros" colors="">
-            <Postman slot="icon" />
-          </Technologies>
+          <div class="flex gap-5 overflow-scroll max-w-full">
+            {/* Para React con un solo color */}
+            <Technologies Title="Git" Description="Librería" colors={[""]}>
+              <GitHubIcon />
+            </Technologies>
+            
+            <!-- Next Js -->
+            <Technologies Title="Github" Description="Librería" colors={[""]}>
+              <GitHubIcon />
+            </Technologies>
+            
+            <!-- TypeScript -->
+            <Technologies Title="Postman" Description="Librería" colors={[""]}>
+              <Postman/>
+            </Technologies>
+            
+            <!-- TailwindIcon -->
+            <Technologies Title="Notion" Description="Librería" colors={[""]}>
+              <Notion/>
+            </Technologies>
+           
+          </div>
         </article>
+     
       </div>
     </section>
 
@@ -276,28 +228,13 @@ import Postman from '../icons/Postman.astro'
 </Layout>
 
 <style>
-  .blob {
-    animation: morph 3.6s linear infinite;
-    border-collapse: separate;
-    outline: 0.35rem solid #2c2c2c;
-  }
+  .scroll_hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
 
-  @keyframes morph {
-    0%,
-    100% {
-      border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-      -webkit-border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-      -moz-border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-    }
-    34% {
-      border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-      -webkit-border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-      -moz-border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-    }
-    67% {
-      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-      -webkit-border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-      -moz-border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-    }
-  }
+.scroll_hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 </style>

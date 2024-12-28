@@ -1,3 +1,55 @@
 @tailwind base; 
 @tailwind components; 
 @tailwind utilities;
+
+.tech-card {
+    container-type: inline-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #1a1a1a;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    min-width: 180px;
+  }
+  
+  .icon-container {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  
+  .icon-wrapper {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .blur-shadow {
+    position: absolute;
+    width: calc(2 * 60px); /* Adaptable al contenedor */
+    height: calc(2 * 60px);
+    filter: blur(42px);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      transform: scale(.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
