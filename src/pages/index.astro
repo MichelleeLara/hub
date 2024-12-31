@@ -4,18 +4,14 @@ import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
 import Technologies from "../components/Technologies";
-import {Figma, ReactIcon, NextJS, AstroIcon, TailwindIcon, TypeScriptIcon, AwsIcon, GoogleIcon, GitHubIcon, GitIcon, Postman, Notion} from '../icons/Icons'
-import IconAstro from "../icons/IconAstro.astro";
-import Aws from "../icons/Aws.astro";
-import Google from "../icons/Google.astro";
-import TS from "../icons/TS.astro";
-
-
+import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion} from '../icons/Icons'
 import TechFront from '../sections/TechFront'
+import { Spotlight } from "../components/ui/Spotlight";
 
 ---
 
 <Layout>
+
   <main
     class="bg-white min-h-screen text-black dark:bg-[#161616] dark:text-gray-300 transition-colors duration-300 pb-32"
   >
@@ -38,7 +34,7 @@ import TechFront from '../sections/TechFront'
     </section>
 
     <section class="pt-28">
-      <div class="mx-6 flex flex-col gap-4">
+      <div class="mx-6 flex flex-col gap-4 relative z-30">
         <h1
           class="text-4xl text-balance text-gray-800 font-semibold min-h-fit dark:text-secondary"
         >
@@ -74,14 +70,18 @@ import TechFront from '../sections/TechFront'
 
     <section class="pt-28">
       <div class="mx-6 flex flex-col gap-6">
-        <div class="flex flex-col gap-1">
-          <h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">
-            Mi stack
-          </h2>
-          <p class="text-sm text-gray-800 dark:text-terteary">
-            Estas son las herramientas y tecnologías que utilizo para crear
-            proyectos funcionales y escalables.
-          </p>
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col gap-1">
+            <h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">
+              Mi stack
+            </h2>
+            <p class="text-sm text-gray-800 dark:text-terteary max-w-[300px]">
+              Estas son las herramientas y tecnologías que utilizo para crear
+              proyectos funcionales y escalables.
+            </p>
+          </div>
+
+          <button class="text-sm underline">Ver listado completo</button>
         </div>
 
         <!-- Frontend -->
