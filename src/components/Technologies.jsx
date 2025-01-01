@@ -4,7 +4,6 @@ import "../global.css"; // Asegúrate de incluir los estilos globales
 
 const Technologies = ({ Title, Description, colors = [], children, isFront }) => {
   // Determinar si `colors` es un arreglo o un string
-  console.log(isFront, Title)
   const shadowColor = Array.isArray(colors) && colors.length > 0 ? colors[0] : colors;
 
   return (

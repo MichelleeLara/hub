@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Figma, ReactIcon, NextJS, TailwindIcon, TypeScriptIcon } from '../icons/Icons';
+import { NextJS, AwsIcon, GoogleIcon, CloudFareIcons } from '../icons/Icons';
 import Technologies from '../components/Technologies';
 
 const FrontendTechnologies = () => {
@@ -8,11 +8,9 @@ const FrontendTechnologies = () => {
   const [direction, setDirection] = useState(0);
 
   const technologies = [
-    { Title: "React", Description: "Librería", Icon: ReactIcon, colors: ["#087ea4"] },
-    { Title: "NextJs", Description: "Framework", Icon: NextJS, colors: ["#8d8d8d"] },
-    { Title: "TypeScript", Description: "Lenguaje", Icon: TypeScriptIcon, colors: ["#3178c6"] },
-    { Title: "TailwindCSS", Description: "Librería", Icon: TailwindIcon, colors: ["#38bdf8"] },
-    { Title: "Figma", Description: "Diseño", Icon: Figma, colors: ["#f24e1e"] }
+    { Title: "Google Cloud", Description: "Nube", Icon: GoogleIcon, colors: [""] },
+    { Title: "AWS", Description: "Nube", Icon: AwsIcon, colors: ["#8d8d8d"] },
+    { Title: "Cloudfare", Description: "Nube de seguridad", Icon: CloudFareIcons, colors: [""] },
   ];
 
   const moveSlide = (newDirection) => {
@@ -41,7 +39,7 @@ const FrontendTechnologies = () => {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
-          Frontend
+          Nube
         </motion.h3>
       </div>
 
