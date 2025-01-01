@@ -21,15 +21,20 @@ const FrontendTechnologies = () => {
   };
 
   const handleDragEnd = (event, info) => {
-    const offsetX = info.offset.x;
-    const threshold = 30;
+  const offsetX = info.offset.x; // Desplazamiento en X
+  const offsetY = info.offset.y; // Desplazamiento en Y
+  const threshold = 50; // Ajusta este valor según la sensibilidad deseada
 
+  // Si el desplazamiento en X es mayor que el umbral, considerar movimiento horizontal
+  if (Math.abs(offsetX) > Math.abs(offsetY)) {
     if (offsetX > threshold) {
-      moveSlide(-1); // Mover hacia la derecha
+      moveSlide(1); // Mover hacia la derecha
     } else if (offsetX < -threshold) {
-      moveSlide(1); // Mover hacia la izquierda
+      moveSlide(-1); // Mover hacia la izquierda
     }
-  };
+  }
+};
+
 
   return (
     <article className="flex flex-col gap-28 my-10">
