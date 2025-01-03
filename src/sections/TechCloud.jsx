@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NextJS, AwsIcon, GoogleIcon, CloudFareIcons } from '../icons/Icons';
 import Technologies from '../components/Technologies';
@@ -6,6 +6,13 @@ import Technologies from '../components/Technologies';
 const FrontendTechnologies = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  // Efecto de limpieza para restaurar el scroll
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   const technologies = [
     { Title: "Google Cloud", Description: "Nube", Icon: GoogleIcon, colors: [""] },
@@ -19,6 +26,7 @@ const FrontendTechnologies = () => {
       (prevIndex + newDirection + technologies.length) % technologies.length
     );
   };
+
   const handleDragEnd = (event, info) => {
     const offsetX = info.offset.x;
     const offsetY = info.offset.y;
@@ -38,8 +46,6 @@ const FrontendTechnologies = () => {
       }
     }
   };
-  
-
 
   return (
     <article className="flex flex-col gap-28 my-10">
@@ -54,13 +60,12 @@ const FrontendTechnologies = () => {
       </div>
 
       <div className="flex flex-col gap-24">
-
-        <div className="relative h-fit flex items-center justify-center ">
+        <div className="relative h-fit flex items-center justify-center">
           <AnimatePresence initial={false} custom={direction}>
             {technologies.map((tech, index) => {
               const isActive = index === currentIndex;
               const distance = (index - currentIndex + technologies.length) % technologies.length;
-              const isFront = distance === 0
+              const isFront = distance === 0;
               
               return (
                 <motion.div
@@ -71,7 +76,13 @@ const FrontendTechnologies = () => {
                   }}
                   drag={isActive ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
-                  onDragEnd={isActive ? handleDragEnd : undefined}
+                  onDragStart={() => {
+                    document.body.style.overflow = 'hidden';
+                  }}
+                  onDragEnd={(event, info) => {
+                    document.body.style.overflow = 'auto';
+                    if (isActive) handleDragEnd(event, info);
+                  }}
                   initial={direction > 0 
                     ? { x: 0, opacity: 0, scale: 0.8 }
                     : { x: 0, opacity: 0, scale: 0.8 }
@@ -94,7 +105,7 @@ const FrontendTechnologies = () => {
                     damping: 30
                   }}
                 >
-                  <Technologies {...tech} isFront= {isFront}>
+                  <Technologies {...tech} isFront={isFront}>
                     <tech.Icon />
                   </Technologies>
                 </motion.div>
@@ -103,27 +114,23 @@ const FrontendTechnologies = () => {
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-center gap-4 ">
-        {technologies.map((_, index) => (
-          <motion.div
-            key={index}
-            className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full cursor-pointer"
-            
-            animate={{
-              scale: currentIndex === index ? 1.9 : 1,
-              backgroundColor: currentIndex === index ? '#3178c6' : '#d1d5db'
-            }}
-            onClick={() => {
-              const newDirection = index > currentIndex ? 1 : -1;
-              moveSlide(newDirection);
-            }}
-          />
-        ))}
+        <div className="flex justify-center gap-4">
+          {technologies.map((_, index) => (
+            <motion.div
+              key={index}
+              className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full cursor-pointer"
+              animate={{
+                scale: currentIndex === index ? 1.9 : 1,
+                backgroundColor: currentIndex === index ? '#3178c6' : '#d1d5db'
+              }}
+              onClick={() => {
+                const newDirection = index > currentIndex ? 1 : -1;
+                moveSlide(newDirection);
+              }}
+            />
+          ))}
+        </div>
       </div>
-
-      </div>
-
-      
     </article>
   );
 };
