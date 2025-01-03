@@ -5,6 +5,7 @@ import '@fontsource-variable/inter-tight';
 // Supports weights 100-900
 import '@fontsource-variable/inter';
 import { Spotlight } from '../components/ui/Spotlight';
+import Header from '../components/Header';
 ---
 <!doctype html>
 <html lang="es" class="dark">
@@ -16,7 +17,9 @@ import { Spotlight } from '../components/ui/Spotlight';
   </head>
   <body class="flex flex-col min-h-screen">
     <!-- Contenido Principal -->
-    <div id="main-content" class="flex-grow overflow-auto">
+    <!-- <Header client:only="react"/> -->
+
+    <div id="main-content" class="flex-grow ">
       <Spotlight/>
       <slot />
     </div>
