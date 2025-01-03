@@ -35,10 +35,11 @@ const FrontendTechnologies = () => {
     
     // Calculamos el ángulo del movimiento
     const angle = Math.atan2(Math.abs(offsetY), Math.abs(offsetX)) * (180 / Math.PI);
+    console.log('this is angle, ',  angle)
     
     // Permitimos movimientos dentro de un ángulo de 60 grados desde la horizontal
     // También consideramos la velocidad del gesto para movimientos rápidos
-    if ((angle < 60 && Math.abs(offsetX) > thresholdX) || Math.abs(velocityX) > 200) {
+    if ((angle < 90 && Math.abs(offsetX) > thresholdX) || Math.abs(velocityX) > 200) {
       if (offsetX > 0) {
         moveSlide(-1); // Mover hacia la derecha
       } else {
