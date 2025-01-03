@@ -19,18 +19,18 @@ const FrontendTechnologies = () => {
       (prevIndex + newDirection + technologies.length) % technologies.length
     );
   };
-
   const handleDragEnd = (event, info) => {
-    const offsetX = info.offset.x; // Desplazamiento en X
-    const offsetY = info.offset.y; // Desplazamiento en Y
-    const thresholdX = 30; // Umbral para el eje horizontal
-    const thresholdY = 100; // Umbral para el eje vertical
-
-    console.log('horizontal' , offsetX)
-    console.log('vertcal' , offsetY)
-  
-    // Si el desplazamiento en X supera su umbral y es mayor que el Y
-    if (Math.abs(offsetX) > Math.abs(offsetY) && Math.abs(offsetX) > thresholdX) {
+    const offsetX = info.offset.x;
+    const offsetY = info.offset.y;
+    const velocityX = info.velocity.x;
+    const thresholdX = 20; // Reducido para mayor sensibilidad
+    
+    // Calculamos el ángulo del movimiento
+    const angle = Math.atan2(Math.abs(offsetY), Math.abs(offsetX)) * (180 / Math.PI);
+    
+    // Permitimos movimientos dentro de un ángulo de 60 grados desde la horizontal
+    // También consideramos la velocidad del gesto para movimientos rápidos
+    if ((angle < 60 && Math.abs(offsetX) > thresholdX) || Math.abs(velocityX) > 200) {
       if (offsetX > 0) {
         moveSlide(-1); // Mover hacia la derecha
       } else {
