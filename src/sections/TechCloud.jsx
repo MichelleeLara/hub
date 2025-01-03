@@ -21,19 +21,24 @@ const FrontendTechnologies = () => {
   };
 
   const handleDragEnd = (event, info) => {
-  const offsetX = info.offset.x; // Desplazamiento en X
-  const offsetY = info.offset.y; // Desplazamiento en Y
-  const threshold = 50; // Ajusta este valor según la sensibilidad deseada
+    const offsetX = info.offset.x; // Desplazamiento en X
+    const offsetY = info.offset.y; // Desplazamiento en Y
+    const thresholdX = 30; // Umbral para el eje horizontal
+    const thresholdY = 100; // Umbral para el eje vertical
 
-  // Si el desplazamiento en X es mayor que el umbral, considerar movimiento horizontal
-  if (Math.abs(offsetX) > Math.abs(offsetY)) {
-    if (offsetX > threshold) {
-      moveSlide(1); // Mover hacia la derecha
-    } else if (offsetX < -threshold) {
-      moveSlide(-1); // Mover hacia la izquierda
+    console.log('horizontal' , offsetX)
+    console.log('vertcal' , offsetY)
+  
+    // Si el desplazamiento en X supera su umbral y es mayor que el Y
+    if (Math.abs(offsetX) > Math.abs(offsetY) && Math.abs(offsetX) > thresholdX) {
+      if (offsetX > 0) {
+        moveSlide(-1); // Mover hacia la derecha
+      } else {
+        moveSlide(1); // Mover hacia la izquierda
+      }
     }
-  }
-};
+  };
+  
 
 
   return (
