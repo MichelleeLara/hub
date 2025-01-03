@@ -27,19 +27,43 @@ const FrontendTechnologies = () => {
     );
   };
 
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
+
+  const handleDrag = (event, info) => {
+    const offsetX = info.offset.x;
+    const offsetY = info.offset.y;
+    const angle = Math.atan2(Math.abs(offsetY), Math.abs(offsetX)) * (180 / Math.PI);
+    
+    // Si el movimiento es casi vertical (89-90 grados), permitimos scroll natural
+    if (angle > 89) {
+      if (isScrollLocked) {
+        document.body.style.overflow = 'auto';
+        setIsScrollLocked(false);
+      }
+    } else {
+      // Para cualquier otro ángulo, bloqueamos el scroll
+      if (!isScrollLocked) {
+        document.body.style.overflow = 'hidden';
+        setIsScrollLocked(true);
+      }
+    }
+  };
+
   const handleDragEnd = (event, info) => {
     const offsetX = info.offset.x;
     const offsetY = info.offset.y;
-    const velocityX = info.velocity.x;
-    const thresholdX = 20; // Reducido para mayor sensibilidad
-    
-    // Calculamos el ángulo del movimiento
     const angle = Math.atan2(Math.abs(offsetY), Math.abs(offsetX)) * (180 / Math.PI);
-    console.log('this is angle, ',  angle)
-    
-    // Permitimos movimientos dentro de un ángulo de 60 grados desde la horizontal
-    // También consideramos la velocidad del gesto para movimientos rápidos
-    if ((angle < 90 && Math.abs(offsetX) > thresholdX) || Math.abs(velocityX) > 200) {
+    const thresholdX = 20;
+
+    // Restauramos el scroll al finalizar
+    document.body.style.overflow = 'auto';
+    setIsScrollLocked(false);
+
+    // Si el movimiento es casi vertical, no hacemos nada
+    if (angle > 90) return;
+    console.log(angle)
+    // Para movimientos diagonales o horizontales
+    if (Math.abs(offsetX) > thresholdX) {
       if (offsetX > 0) {
         moveSlide(-1); // Mover hacia la derecha
       } else {
@@ -77,13 +101,8 @@ const FrontendTechnologies = () => {
                   }}
                   drag={isActive ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
-                  onDragStart={() => {
-                    document.body.style.overflow = 'hidden';
-                  }}
-                  onDragEnd={(event, info) => {
-                    document.body.style.overflow = 'auto';
-                    if (isActive) handleDragEnd(event, info);
-                  }}
+                  onDrag={isActive ? handleDrag : undefined}
+                  onDragEnd={isActive ? handleDragEnd : undefined}
                   initial={direction > 0 
                     ? { x: 0, opacity: 0, scale: 0.8 }
                     : { x: 0, opacity: 0, scale: 0.8 }
