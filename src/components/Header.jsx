@@ -43,7 +43,7 @@ const Header = () => {
 
   const variants = {
     expanded: {
-      width: "100%",
+      // width: "100%",
       transition: {
         type: "spring",
         duration: 0.4,
@@ -57,7 +57,7 @@ const Header = () => {
       // etc
     },
     visible: {
-      width: "80%",
+      // width: "80%",
 
       y: 10,
       borderRadius: 60,
@@ -69,7 +69,7 @@ const Header = () => {
       },
     },
     hidden: {
-      width: "80%",
+      // width: "80%",
 
       y: -60, // se oculta por completo
       transition: {
