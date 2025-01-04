@@ -38,39 +38,23 @@ const Header = () => {
 
   // Variantes para animar la posición Y del header
   const variants = {
+    expanded: {
+      width: "100%",
+      // en lugar de width: 100% => transform: scaleX( ? )?
+      // o y: 0
+      y: 0,
+      borderRadius: 0,
+      // etc
+      transition: { duration: 0.3 },
+    },
     visible: {
       y: 0,
       borderRadius: 60,
-      transition: {
-        type: "spring",
-        duration: 0.4,
-        stiffness: 300,
-        damping: 30,
-        // mass, bounce, etc. para mayor fine-tuning
-      },
+      transition: { duration: 0.3 },
     },
     hidden: {
-      y: -60,
-      borderRadius: 60,
-      transition: {
-        type: "spring",
-        duration: 0.4,
-        stiffness: 300,
-        damping: 30,
-      },
-    },
-    expanded: {
-      width: "100%",
-      borderRadius: 0,
-      left: 0,
-      x: 0,
-      top: 0,
-      transition: {
-        type: "spring",
-        duration: 0.4,
-        stiffness: 300,
-        damping: 30,
-      },
+      y: "-80%", // se oculta por completo
+      transition: { duration: 0.3 },
     },
   };
 
