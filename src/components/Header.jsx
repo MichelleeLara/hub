@@ -107,9 +107,7 @@ const Header = () => {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-full">
-                    Botón Isla
-                  </button>
+                {/* <p>algo</p> */}
                 </motion.div>
               )}
             </AnimatePresence>
