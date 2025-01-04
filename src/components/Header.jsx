@@ -43,41 +43,21 @@ const Header = () => {
 
   const variants = {
     expanded: {
-      // width: "100%",
-      transition: {
-        type: "spring",
-        duration: 0.4,
-        stiffness: 300,
-        damping: 30,
-      },
       // en lugar de width: 100% => transform: scaleX( ? )?
       // o y: 0
       y: 0,
       borderRadius: 0,
       // etc
+      transition: { duration: 0.4 },
     },
     visible: {
-      // width: "80%",
-
-      y: 10,
+      y: 0,
       borderRadius: 60,
-      transition: {
-        type: "spring",
-        duration: 0.4,
-        stiffness: 300,
-        damping: 30,
-      },
+      transition: { duration: 0.4 },
     },
     hidden: {
-      // width: "80%",
-
-      y: -60, // se oculta por completo
-      transition: {
-        type: "spring",
-        duration: 0.4,
-        stiffness: 300,
-        damping: 30,
-      },
+      y: "-70%", // se oculta por completo
+      transition: { duration: 0.4 },
     },
   };
 
@@ -89,17 +69,17 @@ const Header = () => {
 
   return (
     <AnimatePresence>
-    <div className="w-full fixed z-50 top-0 left-0  flex items-center justify-center">
       <motion.header
-        className="
-                   bg-[#eff3f4] dark:bg-[#1c1c1c] py-3
+        className="fixed top-0 left-0 w-full z-50 
+                   bg-[#eff3f4] dark:bg-[#1c1c1c]
+                   shadow-2xl py-3
                    will-change-transform" // Para activar GPU
         style={{ transformOrigin: "top center" }}
         variants={variants}
         initial="visible"
         animate={currentVariant}
       >
-          <div className="mx-6 flex gap-3 items-center justify-between">
+           <div className="mx-6 flex gap-3 items-center justify-between">
             <div className="flex gap-3 items-center">
               <img
                 src="/author.png"
@@ -137,8 +117,6 @@ const Header = () => {
             <ThemeToggle />
           </div>
       </motion.header>
-    
-    </div>
     </AnimatePresence>
   );
 };
