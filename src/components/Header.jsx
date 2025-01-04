@@ -5,6 +5,7 @@ import ThemeToggle from "./Themetoggle";
 
 const Header = () => {
   const [hidden, setHidden] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [isStart, setIsStart] = useState(false);
 
   let lastScroll = 0;
@@ -28,6 +29,7 @@ const Header = () => {
           // 3) si scrolleamos hacia arriba
           else if (currentScroll < lastScroll) {
             setHidden(false);
+            setVisible(true);
           }
 
           lastScroll = Math.max(currentScroll, 0);
@@ -95,41 +97,60 @@ const Header = () => {
           initial="visible"
           animate={currentVariant}
         >
-            <div className="mx-6 flex gap-3 items-center justify-between">
-              <div className="flex gap-3 items-center">
-                <img
-                  src="/author.png"
-                  className="w-12 object-top"
-                  alt="Author"
-                />
-                {/* <div className="flex flex-col gap-0">
+          <div className="mx-6 flex gap-3 items-center justify-between">
+            <div className="flex gap-3 items-center">
+              <img src="/author.png" className="w-12 object-top" alt="Author" />
+              <AnimatePresence>
+                <div className="flex flex-col gap-0">
                   <p className="font-semibold text-sm dark:text-secondary">
-                    Mich Rodriguez
+                    {(currentVariant !== 'expanded') ? <span>Mich R.</span> : <span>Mich </span>}
+                    {/* Mich{" "} */}
+                    {(currentVariant === 'expanded') && (
+                      <motion.span
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        Rodriguez
+                      </motion.span>
+                    )}
                   </p>
                   <p className="text-xs font-medium text-terteary">
-                    Frontend React
+                    Frontend{" "}
+                    {(currentVariant === 'expanded') && (
+                      <motion.span
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        React
+                      </motion.span>
+                    )}
                   </p>
-                </div> */}
-              </div>
-
-              <AnimatePresence>
-                {/* Si está en modo hidden, NO mostramos el botón */}
-                {!hidden && (
-                  <motion.div
-                    key="island-btn"
-                    className="flex justify-center"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                  {/* <p>algo</p> */}
-                  </motion.div>
-                )}
+                </div>
               </AnimatePresence>
-
-              <ThemeToggle />
             </div>
+
+            <AnimatePresence>
+              {/* Si está en modo hidden, NO mostramos el botón */}
+              {!hidden && (
+                <motion.div
+                  key="island-btn"
+                  className="flex justify-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* <p>algo</p> */}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <ThemeToggle />
+          </div>
         </motion.header>
       </div>
     </AnimatePresence>
