@@ -57,7 +57,9 @@ const Header = () => {
       // etc
     },
     visible: {
-      y: '10%',
+      width: "80%",
+
+      y: 10,
       borderRadius: 60,
       transition: {
         type: "spring",
@@ -67,7 +69,9 @@ const Header = () => {
       },
     },
     hidden: {
-      y: "-80%", // se oculta por completo
+      width: "80%",
+
+      y: -60, // se oculta por completo
       transition: {
         type: "spring",
         duration: 0.4,
