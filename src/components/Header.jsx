@@ -57,7 +57,7 @@ const Header = () => {
       }
     },
     visible: {
-      widht: "50%",
+      // width: "75%",
       y: 10,
       borderRadius: 60,
       transition: {
@@ -102,14 +102,14 @@ const Header = () => {
                   className="w-12 object-top"
                   alt="Author"
                 />
-                <div className="flex flex-col gap-0">
+                {/* <div className="flex flex-col gap-0">
                   <p className="font-semibold text-sm dark:text-secondary">
                     Mich Rodriguez
                   </p>
                   <p className="text-xs font-medium text-terteary">
                     Frontend React
                   </p>
-                </div>
+                </div> */}
               </div>
 
               <AnimatePresence>
