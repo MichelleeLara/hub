@@ -39,7 +39,7 @@ const Header = () => {
   // Variantes para animar la posición Y del header
   const variants = {
     visible: {
-      y: 10,
+      y: 0,
       borderRadius: 60,
       transition: {
         type: "spring",
@@ -64,7 +64,6 @@ const Header = () => {
       borderRadius: 0,
       left: 0,
       x: 0,
-      y: 0,
       top: 0,
       transition: {
         type: "spring",
