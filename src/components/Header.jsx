@@ -45,6 +45,7 @@ const Header = () => {
     expanded: {
       // en lugar de width: 100% => transform: scaleX( ? )?
       // o y: 0
+      width: "100%",
       y: 0,
       borderRadius: 0,
       // etc
@@ -56,6 +57,7 @@ const Header = () => {
       }
     },
     visible: {
+      widht: "50%",
       y: 10,
       borderRadius: 60,
       transition: {
@@ -84,52 +86,52 @@ const Header = () => {
 
   return (
     <AnimatePresence>
-      <motion.header
-        className="fixed top-0 left-0 w-full z-50 
-                   bg-[#eff3f4] dark:bg-[#1c1c1c]
-                   py-3
-                   will-change-transform" // Para activar GPU
-        style={{ transformOrigin: "top center" }}
-        variants={variants}
-        initial="visible"
-        animate={currentVariant}
-      >
-           <div className="mx-6 flex gap-3 items-center justify-between">
-            <div className="flex gap-3 items-center">
-              <img
-                src="/author.png"
-                className="w-12 object-top"
-                alt="Author"
-              />
-              <div className="flex flex-col gap-0">
-                <p className="font-semibold text-sm dark:text-secondary">
-                  Mich Rodriguez
-                </p>
-                <p className="text-xs font-medium text-terteary">
-                  Frontend React
-                </p>
+      <div className="fixed top-0 left-0 w-full z-50  will-change-auto flex items-center justify-center">
+        <motion.header
+          className=" w-3/4 bg-[#eff3f4] dark:bg-[#1c1c1c]
+                    py-3" // Para activar GPU
+          style={{ transformOrigin: "top center" }}
+          variants={variants}
+          initial="visible"
+          animate={currentVariant}
+        >
+            <div className="mx-6 flex gap-3 items-center justify-between">
+              <div className="flex gap-3 items-center">
+                <img
+                  src="/author.png"
+                  className="w-12 object-top"
+                  alt="Author"
+                />
+                <div className="flex flex-col gap-0">
+                  <p className="font-semibold text-sm dark:text-secondary">
+                    Mich Rodriguez
+                  </p>
+                  <p className="text-xs font-medium text-terteary">
+                    Frontend React
+                  </p>
+                </div>
               </div>
+
+              <AnimatePresence>
+                {/* Si está en modo hidden, NO mostramos el botón */}
+                {!hidden && (
+                  <motion.div
+                    key="island-btn"
+                    className="flex justify-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                  {/* <p>algo</p> */}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <ThemeToggle />
             </div>
-
-            <AnimatePresence>
-              {/* Si está en modo hidden, NO mostramos el botón */}
-              {!hidden && (
-                <motion.div
-                  key="island-btn"
-                  className="flex justify-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                >
-                {/* <p>algo</p> */}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <ThemeToggle />
-          </div>
-      </motion.header>
+        </motion.header>
+      </div>
     </AnimatePresence>
   );
 };
