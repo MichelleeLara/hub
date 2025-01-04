@@ -48,16 +48,31 @@ const Header = () => {
       y: 0,
       borderRadius: 0,
       // etc
-      transition: { duration: 0.4 },
+      transition: {
+        type: "spring",
+        duration: 0.4,
+        stiffness: 400,
+        damping: 28
+      }
     },
     visible: {
-      y: 0,
+      y: 10,
       borderRadius: 60,
-      transition: { duration: 0.4 },
+      transition: {
+        type: "spring",
+        duration: 0.4,
+        stiffness: 400,
+        damping: 28
+      }
     },
     hidden: {
       y: "-70%", // se oculta por completo
-      transition: { duration: 0.4 },
+      transition: {
+        type: "spring",
+        duration: 0.4,
+        stiffness: 400,
+        damping: 28
+      }
     },
   };
 
@@ -72,7 +87,7 @@ const Header = () => {
       <motion.header
         className="fixed top-0 left-0 w-full z-50 
                    bg-[#eff3f4] dark:bg-[#1c1c1c]
-                   shadow-2xl py-3
+                   py-3
                    will-change-transform" // Para activar GPU
         style={{ transformOrigin: "top center" }}
         variants={variants}
