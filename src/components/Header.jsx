@@ -98,7 +98,7 @@ const Header = () => {
           animate={currentVariant}
         >
           <div className="mx-6 flex gap-3 items-center justify-between">
-            <div className="flex gap-3 items-center min-w-[165px]">
+            <div className="flex gap-3 items-center min-w-[165px] bg-red-500">
               <img src="/author.png" className="w-12 object-top" alt="Author" />
               <AnimatePresence>
                 <div className="flex flex-col gap-0">
