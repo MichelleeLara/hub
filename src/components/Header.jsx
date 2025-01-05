@@ -54,7 +54,7 @@ const Header = () => {
       transition: {
         type: "spring",
         duration: 0.4,
-        stiffness: 100,
+        stiffness: 5,
         damping: 28
       }
     },
@@ -65,7 +65,7 @@ const Header = () => {
       transition: {
         type: "spring",
         duration: 0.4,
-        stiffness: 100,
+        stiffness: 5,
         damping: 28
       }
     },
@@ -74,7 +74,7 @@ const Header = () => {
       transition: {
         type: "spring",
         duration: 0.4,
-        stiffness: 100,
+        stiffness: 5,
         damping: 28
       }
     },
