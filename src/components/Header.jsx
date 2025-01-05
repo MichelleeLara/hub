@@ -86,8 +86,7 @@ const Header = () => {
     <AnimatePresence>
       <div className="fixed top-0 left-0 w-full z-50  will-change-auto flex items-center justify-center">
         <motion.header
-          className="min-w-[310px] w-3/4 bg-[#eff3f4] shadow-2xl dark:bg-[#1c1c1c]
-                    py-3" // Para activar GPU
+          className={`min-w-[310px] w-3/4 bg-[#eff3f4] shadow-2xl dark:bg-[#1c1c1c]  py-3 ${(currentVariant !== 'expanded' && !hidden) ? 'border border-[#d2d2d2] dark:border-[#5c5c5c]' : ''}`} // Para activar GPU
           style={{ transformOrigin: "top center" }}
           variants={variants}
           initial="visible"
