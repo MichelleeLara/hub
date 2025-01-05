@@ -45,12 +45,9 @@ const Header = () => {
 
   const variants = {
     expanded: {
-      // en lugar de width: 100% => transform: scaleX( ? )?
-      // o y: 0
       width: "100%",
       y: 0,
       borderRadius: 0,
-      // etc
       transition: {
         type: "spring",
         duration: 0.4,
@@ -59,7 +56,6 @@ const Header = () => {
       }
     },
     visible: {
-      // width: "75%",
       y: 10,
       borderRadius: 60,
       transition: {
@@ -90,7 +86,7 @@ const Header = () => {
     <AnimatePresence>
       <div className="fixed top-0 left-0 w-full z-50  will-change-auto flex items-center justify-center">
         <motion.header
-          className=" w-3/4 bg-[#eff3f4] shadow-2xl dark:bg-[#1c1c1c]
+          className="min-w-[310px] w-3/4 bg-[#eff3f4] shadow-2xl dark:bg-[#1c1c1c]
                     py-3" // Para activar GPU
           style={{ transformOrigin: "top center" }}
           variants={variants}
@@ -98,13 +94,12 @@ const Header = () => {
           animate={currentVariant}
         >
           <div className="mx-6 flex gap-3 items-center justify-between">
-            <div className="flex gap-3 items-center min-w-[168px]  ">
+            <div className="flex gap-3 items-center text-nowrap ">
               <img src="/author.png" className="w-12 object-top" alt="Author" />
               <AnimatePresence>
                 <div className="flex flex-col gap-0">
                   <p className="font-semibold text-sm dark:text-secondary">
                     {(currentVariant !== 'expanded') ? <span>Mich R.</span> : <span>Mich </span>}
-                    {/* Mich{" "} */}
                     {(currentVariant === 'expanded') && (
                       <motion.span
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -139,10 +134,13 @@ const Header = () => {
                   <motion.div
                     key="island-btn"
                     className="flex justify-center items-center h-10 text-xs bg-primary rounded-xl py-1 px-2 gap-2"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.4, stiffness: 900, type: "spring", damping: 30 }}
+                    /*  
+                      * Aquí es donde agregamos x: 50 → x: 0 para que “nazca” desde la derecha 
+                    */
+                    initial={{ opacity: 0, scale: 0.8, y: -50 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8}}
+                    transition={{ duration: 0.8, stiffness: 800, type: "spring", damping: 40 }}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={18} height={18} color={"currentColor"} fill={"none"}>
                       <path d="M4 7C4.58984 7.60684 6.15973 10 7 10C7.84027 10 9.41016 7.60684 10 7M7 9L7 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -154,7 +152,6 @@ const Header = () => {
               </AnimatePresence>
               <ThemeToggle />
             </div>
-
           </div>
         </motion.header>
       </div>
