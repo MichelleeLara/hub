@@ -133,21 +133,6 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            <AnimatePresence>
-              {/* Si está en modo hidden, NO mostramos el botón */}
-              {!hidden && (
-                <motion.div
-                  key="island-btn"
-                  className="flex justify-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* <p>algo</p> */}
-                </motion.div>
-              )}
-            </AnimatePresence>
 
             <ThemeToggle />
           </div>
