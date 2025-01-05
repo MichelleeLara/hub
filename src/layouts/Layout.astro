@@ -44,6 +44,16 @@ import Header from '../components/Header';
   
   }
 
+  html:not(.dark),
+  html:not(.dark) body {
+    background: #ffffff; /* fondo claro */
+  }
+
+  html.dark,
+  html.dark body {
+    background: #1c1c1c; /* fondo oscuro */
+  }
+
 
   @view-transition{
   navigation: auto;
