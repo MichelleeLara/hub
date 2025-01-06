@@ -9,6 +9,7 @@ import TechFront from '../sections/TechFront'
 import TechColaborate from '../sections/TechColaborate'
 import TechCloud from '../sections/TechCloud'
 import Header from "../components/Header";
+import Particles from '../components/ui/Particles'
 
 ---
 
@@ -20,8 +21,15 @@ import Header from "../components/Header";
   
     <Header client:only="react"/>
 
-    <section class="pt-28">
+    <section class="pt-32">
       <div class="mx-6 flex flex-col gap-4 relative z-30">
+        <div class="text-xs flex items-center gap-2">
+          <div class="w-3 h-3 bg-green-400 rounded-full bg-opacity-35 flex items-center justify-center animate-pulse">
+            <div class="w-1 h-1 bg-green-400 rounded-full"></div>
+          </div>
+
+          <p>Disponible para trabajar!</p>
+        </div>
         <h1
           class="text-4xl text-balance text-gray-800 font-semibold min-h-fit dark:text-secondary"
         >
@@ -40,7 +48,7 @@ import Header from "../components/Header";
           />
         </div>
 
-        <div class="flex gap-3 text-center mt-0 flex-wrap">
+        <div class="flex gap-3 text-center mt-4 flex-wrap relative">
           <a
             href=""
             class="border-2 rounded-lg bg-[#eff3f4] border-[#eff3f4] dark:bg-[#2c2c2c] dark:border-[#2c2c2c] text-xs py-2 px-1.5"
@@ -48,9 +56,12 @@ import Header from "../components/Header";
           >
           <a
             href=""
-            class="border-2 rounded-lg border-[#eff3f4] dark:border-[#2c2c2c] text-xs py-2 px-1.5"
+            class="border-2 rounded-lg bg-[#161616] border-[#eff3f4] dark:border-[#2c2c2c] text-xs py-2 px-1.5"
             >Colaboremos !</a
           >
+          <div class="absolute right-[120px] bottom-[-2rem] -z-10 h-24 w-24">
+            <Particles client:load/>
+          </div>
         </div>
       </div>
     </section>
