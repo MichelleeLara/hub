@@ -66,7 +66,6 @@ export default function AnimatedTabs() {
       }
     });
     const htmlText = await response.text();
-    console.log(response)
 
     // Parseamos el HTML obtenido para extraer el contenido principal
     const parser = new DOMParser();

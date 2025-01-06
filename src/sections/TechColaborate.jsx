@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Figma, ReactIcon, NextJS, TailwindIcon, TypeScriptIcon } from '../icons/Icons';
+import { GitIcon, GitHubIcon, Postman, Notion } from '../icons/Icons';
 import Technologies from '../components/Technologies';
 
 const FrontendTechnologies = () => {
@@ -8,11 +8,10 @@ const FrontendTechnologies = () => {
   const [direction, setDirection] = useState(0);
 
   const technologies = [
-    { Title: "React", Description: "Librería", Icon: ReactIcon, colors: ["#087ea4"] },
-    { Title: "NextJs", Description: "Framework", Icon: NextJS, colors: ["#8d8d8d"] },
-    { Title: "TypeScript", Description: "Lenguaje", Icon: TypeScriptIcon, colors: ["#3178c6"] },
-    { Title: "TailwindCSS", Description: "Librería", Icon: TailwindIcon, colors: ["#38bdf8"] },
-    { Title: "Figma", Description: "Diseño", Icon: Figma, colors: ["#f24e1e"] }
+    { Title: "Git", Description: "Nube", Icon: GitIcon, colors: [""] },
+    { Title: "GitHub", Description: "Nube", Icon: GitHubIcon, colors: ["#8d8d8d"] },
+    { Title: "Postman", Description: "Nube de seguridad", Icon: Postman, colors: [""] },
+    { Title: "Notion", Description: "Nube de seguridad", Icon: Notion, colors: [""] },
   ];
 
   const moveSlide = (newDirection) => {
@@ -41,7 +40,7 @@ const FrontendTechnologies = () => {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
-          Frontend
+          Colbaoración y productividad
         </motion.h3>
       </div>
 

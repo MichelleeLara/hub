@@ -4,48 +4,39 @@ import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
 import Technologies from "../components/Technologies";
-import {Figma, ReactIcon, NextJS, AstroIcon, TailwindIcon, TypeScriptIcon, AwsIcon, GoogleIcon, GitHubIcon, GitIcon, Postman, Notion} from '../icons/Icons'
-import IconAstro from "../icons/IconAstro.astro";
-import Aws from "../icons/Aws.astro";
-import Google from "../icons/Google.astro";
-import TS from "../icons/TS.astro";
-
-
+import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion} from '../icons/Icons'
 import TechFront from '../sections/TechFront'
+import TechColaborate from '../sections/TechColaborate'
+import TechCloud from '../sections/TechCloud'
+import Header from "../components/Header";
+import Particles from '../components/ui/Particles'
 
 ---
 
 <Layout>
+
   <main
     class="bg-white min-h-screen text-black dark:bg-[#161616] dark:text-gray-300 transition-colors duration-300 pb-32"
   >
-    <section
-      class="fixed left-0 top-0 w-full bg-[#eff3f4] dark:bg-[#1c1c1c] py-3 z-50"
-    >
-      <div class="mx-6 flex gap-3 items-center justify-between">
-        <div class="flex gap-3 items-center">
-          <img src="/author.png" class="w-12 object-top" alt="" />
-          <div class="flex flex-col gap-0">
-            <p class="font-semibold text-sm dark:text-secondary">
-              Mich Rodriguez
-            </p>
-            <p class="text-xs font-medium text-terteary">Frontend React</p>
+  
+    <Header client:only="react"/>
+
+    <section class="pt-32">
+      <div class="mx-6 flex flex-col gap-4 relative z-30">
+        <div class="text-xs flex items-center gap-2">
+          <div class="w-3 h-3 bg-green-400 rounded-full bg-opacity-35 flex items-center justify-center animate-pulse">
+            <div class="w-1 h-1 bg-green-400 rounded-full"></div>
           </div>
+
+          <p>Disponible para trabajar!</p>
         </div>
-
-        <ThemeToggle client:load />
-      </div>
-    </section>
-
-    <section class="pt-28">
-      <div class="mx-6 flex flex-col gap-4">
         <h1
           class="text-4xl text-balance text-gray-800 font-semibold min-h-fit dark:text-secondary"
         >
           Soy Desarrollador
           <AnimateFragments
             client:load
-            value={'<span class="text-terteary">frontend React.</span>'}
+            value={'<span class="font-medium bg-gradient-to-r from-gray-500 to-gray-800 bg-clip-text text-transparent dark:from-gray-300 dark:to-gray-700">frontend React.</span>'}
           />
         </h1>
         <div
@@ -57,7 +48,7 @@ import TechFront from '../sections/TechFront'
           />
         </div>
 
-        <div class="flex gap-3 text-center mt-0 flex-wrap">
+        <div class="flex gap-3 text-center mt-4 flex-wrap relative">
           <a
             href=""
             class="border-2 rounded-lg bg-[#eff3f4] border-[#eff3f4] dark:bg-[#2c2c2c] dark:border-[#2c2c2c] text-xs py-2 px-1.5"
@@ -65,73 +56,37 @@ import TechFront from '../sections/TechFront'
           >
           <a
             href=""
-            class="border-2 rounded-lg border-[#eff3f4] dark:border-[#2c2c2c] text-xs py-2 px-1.5"
+            class="border-2 rounded-lg bg-[#161616] border-[#eff3f4] dark:border-[#2c2c2c] text-xs py-2 px-1.5"
             >Colaboremos !</a
           >
+          <div class="absolute right-[120px] bottom-[-2rem] -z-10 h-24 w-24">
+            <Particles client:load/>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="pt-28">
       <div class="mx-6 flex flex-col gap-6">
-        <div class="flex flex-col gap-1">
-          <h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">
-            Mi stack
-          </h2>
-          <p class="text-sm text-gray-800 dark:text-terteary">
-            Estas son las herramientas y tecnologías que utilizo para crear
-            proyectos funcionales y escalables.
-          </p>
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col gap-1">
+            <h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">
+              Mi stack
+            </h2>
+            <p class="text-sm text-gray-800 dark:text-terteary max-w-[300px]">
+              Creo proyectos funcionales y escalables con estas tecnologías.
+            </p>
+          </div>
+
+          <button class="text-sm underline">Ver listado completo</button>
         </div>
 
         <!-- Frontend -->
          <TechFront client:only="react" />
         <!-- Cloud -->
-        <article class="flex flex-col gap-3">
-          <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
-            Cloud
-          </h3>
-          <div class="flex gap-5 overflow-scroll max-w-full">
-            {/* AWS */}
-            <Technologies Title="Aws" Description="Librería" colors={["#"]}>
-              <AwsIcon/>
-            </Technologies>
-            
-            <!-- Google cloud -->
-            <Technologies Title="Google cloud" Description="Librería" colors={[""]}>
-              <GoogleIcon />
-            </Technologies>
-           
-          </div>
-        </article>
+        <TechCloud client:only="react" />
         <!-- Frontend -->
-        <article class="flex flex-col gap-3">
-          <h3 class="text-lg text-gray-800 font-semibold dark:text-secondary">
-            Colbaoración y productividad
-          </h3>
-          <div class="flex gap-5 overflow-scroll max-w-full">
-            {/* Para React con un solo color */}
-            <Technologies Title="Git" Description="Librería" colors={[""]}>
-              <GitHubIcon />
-            </Technologies>
-            
-            <!-- Next Js -->
-            <Technologies Title="Github" Description="Librería" colors={[""]}>
-              <GitHubIcon />
-            </Technologies>
-            
-            <!-- TypeScript -->
-            <Technologies Title="Postman" Description="Librería" colors={[""]}>
-              <Postman/>
-            </Technologies>
-            
-            <!-- TailwindIcon -->
-            <Technologies Title="Notion" Description="Librería" colors={[""]}>
-              <Notion/>
-            </Technologies>
-           
-          </div>
-        </article>
+         <TechColaborate client:only="react" />
      
       </div>
     </section>
@@ -153,7 +108,7 @@ import TechFront from '../sections/TechFront'
           <Jobs client:visible />
           <aside class="flex flex-col gap-1">
             <div
-              class="flex flex-col gap-1 sticky top-[71px] bg-white w-full dark:bg-[#161616]"
+              class="flex flex-col gap-1  top-[71px] bg-white w-full dark:bg-[#161616]"
             >
               <h3 class="font-semibold">Tech lead - Rand abogados</h3>
               <p class="text-xs text-terteary">
@@ -176,7 +131,7 @@ import TechFront from '../sections/TechFront'
           <Jobs client:visible />
           <aside class="flex flex-col gap-1">
             <div
-              class="flex flex-col gap-1 sticky top-[71px] bg-white w-full dark:bg-[#161616]"
+              class="flex flex-col gap-1  top-[71px] bg-white w-full dark:bg-[#161616]"
             >
               <h3 class="font-semibold">
                 Desarrollador front-end - Medibiologica
@@ -201,7 +156,7 @@ import TechFront from '../sections/TechFront'
           <Jobs client:visible />
           <aside class="flex flex-col gap-1">
             <div
-              class="flex flex-col gap-1 sticky top-[71px] bg-white w-full dark:bg-[#161616]"
+              class="flex flex-col gap-1  top-[71px] bg-white w-full dark:bg-[#161616]"
             >
               <h3 class="font-semibold">
                 DevOps fullStack Engineer - Nomad Technologies

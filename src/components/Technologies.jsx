@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../global.css"; // Asegúrate de incluir los estilos globales
 
-const Technologies = ({ Title, Description, colors = [], children }) => {
+const Technologies = ({ Title, Description, colors = [], children, isFront }) => {
   // Determinar si `colors` es un arreglo o un string
   const shadowColor = Array.isArray(colors) && colors.length > 0 ? colors[0] : colors;
 
   return (
-    <div className="tech-card rounded-xl flex gap-1 items-center py-4 px-4 justify-center bg-[#1a1a1a] overflow-hidden relative min-w-[180px]">
+    <div className={`tech-card rounded-xl flex gap-1 items-center py-4 px-4 justify-center bg-[#1a1a1a] overflow-hidden relative min-w-[180px] ${isFront ? '' : 'border-[#626262] border-t'}`}>
       <div className="flex flex-col gap-1 items-center justify-center relative">
         {/* Ícono Principal */}
         <div className="icon-container">

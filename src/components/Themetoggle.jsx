@@ -32,22 +32,15 @@ export default function ThemeToggle() {
     <motion.div
       // Contenedor principal con animación del fondo
       className=" flex items-center justify-center transition-colors duration-500"
-      
     >
       <motion.button
         onClick={toggleTheme}
-        className="relative flex items-center w-20 h-9 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors duration-500"
+        className="relative flex items- w-10 h-10 rounded-full bg-[#b1b3b4] dark:bg-gray-700 transition-colors duration-500"
         whileTap={{ scale: 0.9 }}
       >
         {/* Ícono del toggle */}
         <motion.div
           className="absolute flex items-center justify-center w-10 h-10"
-          initial={{
-            left: theme === "dark" ? "4px" : "calc(100% - 44px)",
-          }}
-          animate={{
-            left: theme === "dark" ? "4px" : "calc(100% - 44px)",
-          }}
           transition={{
             type: "spring",
             stiffness: 500,
@@ -79,18 +72,45 @@ export default function ThemeToggle() {
             <motion.svg
               key="sun"
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
               viewBox="0 0 24 24"
+              width={18}
+              height={18}
+              /** Aplica color como “currentColor” */
               fill="currentColor"
+              /** Opcional: si quieres forzar un color exacto */
+              color="#facc15"
+              /** Animación de Framer Motion */
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.3 }}
-              className="text-yellow-400"
+              /** Clase para tener color "amarillo” y manipular con Tailwind */
+              className=""
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+              {/* Círculo central (relleno) */}
+              <path
+                d="M17 12C17 14.7614 14.7614 17 12 17
+         C9.23858 17 7 14.7614 7 12
+         C7 9.23858 9.23858 7 12 7
+         C14.7614 7 17 9.23858 17 12Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                fill="currentColor"
+              />
+              {/* Rayos del sol (solo borde) */}
+              <path
+                d="M12 2V3.5M12 20.5V22
+         M19.0708 19.0713L18.0101 18.0106
+         M5.98926 5.98926L4.9286 4.9286
+         M22 12H20.5
+         M3.5 12H2
+         M19.0713 4.92871L18.0106 5.98937
+         M5.98975 18.0107L4.92909 19.0714"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+              />
             </motion.svg>
           )}
         </motion.div>
@@ -98,3 +118,4 @@ export default function ThemeToggle() {
     </motion.div>
   );
 }
+
