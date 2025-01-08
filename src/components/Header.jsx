@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, color, motion } from "framer-motion";
 import ThemeToggle from "./Themetoggle";
 // import throttle from "lodash/throttle"; // O implementa tu propia.
 
 const Header = () => {
   const [hidden, setHidden] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [isStart, setIsStart] = useState(false);
+  const [currentVariant, setCurrentVariant] = useState('expanded')
 
   let lastScroll = 0;
 
@@ -19,17 +18,15 @@ const Header = () => {
         window.requestAnimationFrame(() => {
           const currentScroll = window.scrollY;
 
-          // 1) si scrolleamos a < 50, se expande
-          setIsStart(currentScroll < 50);
-
-          // 2) si scrolleamos hacia abajo
-          if (currentScroll > lastScroll && currentScroll > 20) {
-            setHidden(true);
-          } 
-          // 3) si scrolleamos hacia arriba
-          else if (currentScroll < lastScroll) {
+          if (currentScroll > lastScroll) {
             setHidden(false);
-            setVisible(true);
+            setCurrentVariant("hidden");
+          } else if ( currentScroll < lastScroll && currentScroll > 0){
+            setHidden(true);
+            setCurrentVariant("visible");
+          } else if (currentScroll === 0){
+            setHidden(false);
+            setCurrentVariant('expanded')
           }
 
           lastScroll = Math.max(currentScroll, 0);
@@ -43,57 +40,90 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const variants = {
-    expanded: {
-      width: "100%",
-      y: 0,
-      borderRadius: 0,
-      transition: {
+ // Puedes ajustar los valores de color a tu gusto
+const variants = {
+  expanded: {
+    width: "100%",
+    y: 0,
+    borderRadius: 0,
+    backgroundColor: "rgba(0,0,0,0)", // transparente
+    transition: {
+      // Aquí definimos transiciones separadas
+      backgroundColor: {
+        duration: .3,   // Duración para el color
+        ease: "easeInOut",
+        stiffness:100,
+      },
+      // Si deseas que las demás props (por ejemplo y, width, etc.) usen otra transición,
+      // las declaras, o usas "default"
+      default: {
         type: "spring",
         duration: 0.4,
         stiffness: 450,
-        damping: 28
+        damping: 32
       }
-    },
-    visible: {
-      y: 10,
-      borderRadius: 60,
-      transition: {
+    }
+  },
+  visible: {
+    y: 10,
+    width: "50%",
+    borderRadius: 60,
+    backgroundColor: "#1c1c1c",
+    transition: {
+      // Aquí definimos transiciones separadas
+      backgroundColor: {
+        duration: .3,   // Duración para el color
+        ease: "easeInOut",
+        stiffness:100
+      },
+      // Si deseas que las demás props (por ejemplo y, width, etc.) usen otra transición,
+      // las declaras, o usas "default"
+      default: {
         type: "spring",
         duration: 0.4,
         stiffness: 450,
-        damping: 28
+        damping: 32
       }
-    },
-    hidden: {
-      y: "-70%", // se oculta por completo
-      transition: {
+    }
+  },
+  hidden: {
+    y: "-80%", // se oculta por completo
+    width: "50%",
+    borderRadius: 60,
+    backgroundColor: "#1c1c1c",
+    transition: {
+      // Aquí definimos transiciones separadas
+      backgroundColor: {
+        duration: .3,   // Duración para el color
+        ease: "easeInOut",
+        stiffness:100
+      },
+      // Si deseas que las demás props (por ejemplo y, width, etc.) usen otra transición,
+      // las declaras, o usas "default"
+      default: {
         type: "spring",
         duration: 0.4,
         stiffness: 450,
-        damping: 28
+        damping: 32
       }
-    },
-  };
+    }
+  },
+};
 
-  const currentVariant = hidden
-    ? "hidden"
-    : isStart
-    ? "expanded"
-    : "visible";
+  console.log(currentVariant)
 
   return (
     <AnimatePresence>
       <div className="fixed top-0 left-0 w-full z-50  will-change-auto flex items-center justify-center">
         <motion.header
-          className={`min-w-[310px] w-2/4 bg-[#eff3f4] shadow-2xl dark:bg-[#1c1c1c]  py-3 ${(currentVariant !== 'expanded' && !hidden) ? 'border border-[#d2d2d2] dark:border-[#5c5c5c]' : ''}`} // Para activar GPU
+          className={`min-w-[310px] w-2/4   dark:shadow-none  py-3 ${currentVariant !== 'expanded' ? 'shadow-2xl border border-[#d2d2d2] dark:border-[#5c5c5c] ' : ''}`} // Para activar GPU
           // style={{ transformOrigin: "top center" }}
           variants={variants}
-          initial="visible"
+          initial="expanded"
           animate={currentVariant}
         >
           <div className="mx-6 flex gap-3 items-center justify-between">
-            <div className="flex gap-3 items-center text-nowrap ">
+            <div className="flex gap-1.5 items-center text-nowrap ">
               <img src="/author.png" className="w-12 object-top" alt="Author" />
               <AnimatePresence>
                 <div className="flex flex-col gap-0">

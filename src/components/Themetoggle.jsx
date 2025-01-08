@@ -35,7 +35,7 @@ export default function ThemeToggle() {
     >
       <motion.button
         onClick={toggleTheme}
-        className="relative flex items- w-10 h-10 rounded-full bg-[#b1b3b4] dark:bg-gray-700 transition-colors duration-500"
+        className="relative flex items- w-10 h-10 rounded-full  transition-colors duration-500"
         whileTap={{ scale: 0.9 }}
       >
         {/* Ícono del toggle */}
