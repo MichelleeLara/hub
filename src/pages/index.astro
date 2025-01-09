@@ -4,13 +4,12 @@ import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
 import Technologies from "../components/Technologies";
-import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion, Figma, TailwindIcon, NextJS} from '../icons/Icons'
+import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion} from '../icons/Icons'
 import TechFront from '../sections/TechFront'
 import TechColaborate from '../sections/TechColaborate'
 import TechCloud from '../sections/TechCloud'
 import Header from "../components/Header";
 import Particles from '../components/ui/Particles'
-// import NextJS from "../icons/NextJS.astro";
 
 ---
 
@@ -22,7 +21,6 @@ import Particles from '../components/ui/Particles'
   
     <Header client:only="react"/>
 
-    <!-- Hero section -->
     <section class="pt-32">
       <div class="mx-6 flex flex-col gap-4 relative z-30">
         <div class="text-xs flex items-center gap-2">
@@ -31,7 +29,7 @@ import Particles from '../components/ui/Particles'
           </div>
 
           <p>Disponible para trabajar!</p>
-         
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;" preserveAspectRatio="xMidYMid meet"><defs><clipPath id="__lottie_element_65"><rect width="500" height="500" x="0" y="0"></rect></clipPath><g id="__lottie_element_70"><g style="display: block;" transform="matrix(1,0,0,1,28.699996948242188,28.751007080078125)" opacity="1"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M293.82,160.76 C293.82,154.35 291.28,148.21 286.74,143.67 C282.21,139.14 276.06,136.59 269.65,136.59 C269.65,136.59 172.95,136.59 172.95,136.59 C166.54,136.59 160.4,139.14 155.86,143.67 C151.32,148.21 148.78,154.35 148.78,160.76 C148.78,160.76 148.78,378.32 148.78,378.32 C148.78,384.74 151.32,390.88 155.86,395.42 C160.4,399.95 166.54,402.5 172.95,402.5 C172.95,402.5 269.65,402.5 269.65,402.5 C276.06,402.5 282.21,399.95 286.74,395.42 C291.28,390.88 293.82,384.74 293.82,378.32 C293.82,378.32 293.82,160.76 293.82,160.76z"></path><g opacity="1" transform="matrix(1,0,0,1,221.3000030517578,269.54400634765625)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(133,133,133)" stroke-opacity="1" stroke-width="16" d=" M72.5199966430664,-108.77999877929688 C72.5199966430664,-115.19200134277344 69.97599792480469,-121.33799743652344 65.43699645996094,-125.87100219726562 C60.904998779296875,-130.40899658203125 54.75899887084961,-132.9530029296875 48.34700012207031,-132.9530029296875 C48.34700012207031,-132.9530029296875 -48.34700012207031,-132.9530029296875 -48.34700012207031,-132.9530029296875 C-54.75899887084961,-132.9530029296875 -60.904998779296875,-130.40899658203125 -65.43699645996094,-125.87100219726562 C-69.97599792480469,-121.33799743652344 -72.5199966430664,-115.19200134277344 -72.5199966430664,-108.77999877929688 C-72.5199966430664,-108.77999877929688 -72.5199966430664,108.77999877929688 -72.5199966430664,108.77999877929688 C-72.5199966430664,115.19200134277344 -69.97599792480469,121.33799743652344 -65.43699645996094,125.87100219726562 C-60.904998779296875,130.40899658203125 -54.75899887084961,132.9530029296875 -48.34700012207031,132.9530029296875 C-48.34700012207031,132.9530029296875 48.34700012207031,132.9530029296875 48.34700012207031,132.9530029296875 C54.75899887084961,132.9530029296875 60.904998779296875,130.40899658203125 65.43699645996094,125.87100219726562 C69.97599792480469,121.33799743652344 72.5199966430664,115.19200134277344 72.5199966430664,108.77999877929688 C72.5199966430664,108.77999877929688 72.5199966430664,-108.77999877929688 72.5199966430664,-108.77999877929688z"></path></g></g></g><g id="__lottie_element_79"><g style="display: block;" transform="matrix(1,0,0,1,28.699996948242188,28.751007080078125)" opacity="1"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M293.82,160.76 C293.82,154.35 291.28,148.21 286.74,143.67 C282.21,139.14 276.06,136.59 269.65,136.59 C269.65,136.59 172.95,136.59 172.95,136.59 C166.54,136.59 160.4,139.14 155.86,143.67 C151.32,148.21 148.78,154.35 148.78,160.76 C148.78,160.76 148.78,378.32 148.78,378.32 C148.78,384.74 151.32,390.88 155.86,395.42 C160.4,399.95 166.54,402.5 172.95,402.5 C172.95,402.5 269.65,402.5 269.65,402.5 C276.06,402.5 282.21,399.95 286.74,395.42 C291.28,390.88 293.82,384.74 293.82,378.32 C293.82,378.32 293.82,160.76 293.82,160.76z"></path><g opacity="1" transform="matrix(1,0,0,1,221.3000030517578,269.54400634765625)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(133,133,133)" stroke-opacity="1" stroke-width="16" d=" M72.5199966430664,-108.77999877929688 C72.5199966430664,-115.19200134277344 69.97599792480469,-121.33799743652344 65.43699645996094,-125.87100219726562 C60.904998779296875,-130.40899658203125 54.75899887084961,-132.9530029296875 48.34700012207031,-132.9530029296875 C48.34700012207031,-132.9530029296875 -48.34700012207031,-132.9530029296875 -48.34700012207031,-132.9530029296875 C-54.75899887084961,-132.9530029296875 -60.904998779296875,-130.40899658203125 -65.43699645996094,-125.87100219726562 C-69.97599792480469,-121.33799743652344 -72.5199966430664,-115.19200134277344 -72.5199966430664,-108.77999877929688 C-72.5199966430664,-108.77999877929688 -72.5199966430664,108.77999877929688 -72.5199966430664,108.77999877929688 C-72.5199966430664,115.19200134277344 -69.97599792480469,121.33799743652344 -65.43699645996094,125.87100219726562 C-60.904998779296875,130.40899658203125 -54.75899887084961,132.9530029296875 -48.34700012207031,132.9530029296875 C-48.34700012207031,132.9530029296875 48.34700012207031,132.9530029296875 48.34700012207031,132.9530029296875 C54.75899887084961,132.9530029296875 60.904998779296875,130.40899658203125 65.43699645996094,125.87100219726562 C69.97599792480469,121.33799743652344 72.5199966430664,115.19200134277344 72.5199966430664,108.77999877929688 C72.5199966430664,108.77999877929688 72.5199966430664,-108.77999877929688 72.5199966430664,-108.77999877929688z"></path></g></g></g><mask id="__lottie_element_79_1" mask-type="alpha"><use xlink:href="#__lottie_element_79"></use></mask><filter id="__lottie_element_83" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%"><feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer></filter><mask id="__lottie_element_70_2" mask-type="alpha"><g filter="url(#__lottie_element_83)"><rect width="500" height="500" x="0" y="0" fill="#ffffff" opacity="0"></rect><use xlink:href="#__lottie_element_70"></use></g></mask></defs><g clip-path="url(#__lottie_element_65)"><g style="display: block;" mask="url(#__lottie_element_70_2)"><g transform="matrix(1,0,0,1,28.699996948242188,28.751007080078125)" opacity="1"><g opacity="1" transform="matrix(1,0,0,1,221.3000030517578,191.9929962158203)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="16" d=" M120.86699676513672,7.054999828338623 C88.78900146484375,-1.7200000286102295 46.417999267578125,-7.054999828338623 -0.0010000000474974513,-7.054999828338623 C-46.41999816894531,-7.054999828338623 -88.78900146484375,-1.7200000286102295 -120.86699676513672,7.054999828338623"></path></g><g opacity="1" transform="matrix(1,0,0,1,221.3000030517578,88.2959976196289)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="16" d=" M-120.86699676513672,48.29600143432617 C-157.9550018310547,38.154998779296875 -181.3000030517578,23.43400001525879 -181.3000030517578,7.056000232696533 C-181.3000030517578,-23.493000030517578 -100.05999755859375,-48.29600143432617 0,-48.29600143432617 C100.05899810791016,-48.29600143432617 181.3000030517578,-23.493000030517578 181.3000030517578,7.056000232696533 C181.3000030517578,23.43400001525879 157.95399475097656,38.154998779296875 120.86599731445312,48.29600143432617"></path></g><g opacity="1" transform="matrix(1,0,0,1,70.21600341796875,188.49099731445312)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="16" d=" M30.216999053955078,93.13999938964844 C30.216999053955078,93.13999938964844 30.216999053955078,-51.900001525878906 30.216999053955078,-51.900001525878906 C-6.870999813079834,-62.04100036621094 -30.216999053955078,-76.76200103759766 -30.216999053955078,-93.13999938964844 C-30.216999053955078,-93.13999938964844 -30.216999053955078,51.900001525878906 -30.216999053955078,51.900001525878906 C-30.216999053955078,68.27799987792969 -6.870999813079834,82.9990005493164 30.216999053955078,93.13999938964844z"></path></g><g opacity="1" transform="matrix(1,0,0,1,372.38299560546875,188.49099731445312)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="16" d=" M-30.215999603271484,93.13999938964844 C-30.215999603271484,93.13999938964844 -30.215999603271484,-51.900001525878906 -30.215999603271484,-51.900001525878906 C6.872000217437744,-62.04100036621094 30.215999603271484,-76.76200103759766 30.215999603271484,-93.13999938964844 C30.215999603271484,-93.13999938964844 30.215999603271484,51.900001525878906 30.215999603271484,51.900001525878906 C30.215999603271484,68.27799987792969 6.872000217437744,82.9990005493164 -30.215999603271484,93.13999938964844z"></path></g></g></g><g style="display: block;" transform="matrix(1,0,0,1,28.699996948242188,28.751007080078125)" opacity="1"><g opacity="1" transform="matrix(1,0,0,1,221.3000030517578,269.54400634765625)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(133,133,133)" stroke-opacity="1" stroke-width="16" d=" M72.5199966430664,-108.77999877929688 C72.5199966430664,-115.19200134277344 69.97599792480469,-121.33799743652344 65.43699645996094,-125.87100219726562 C60.904998779296875,-130.40899658203125 54.75899887084961,-132.9530029296875 48.34700012207031,-132.9530029296875 C48.34700012207031,-132.9530029296875 -48.34700012207031,-132.9530029296875 -48.34700012207031,-132.9530029296875 C-54.75899887084961,-132.9530029296875 -60.904998779296875,-130.40899658203125 -65.43699645996094,-125.87100219726562 C-69.97599792480469,-121.33799743652344 -72.5199966430664,-115.19200134277344 -72.5199966430664,-108.77999877929688 C-72.5199966430664,-108.77999877929688 -72.5199966430664,108.77999877929688 -72.5199966430664,108.77999877929688 C-72.5199966430664,115.19200134277344 -69.97599792480469,121.33799743652344 -65.43699645996094,125.87100219726562 C-60.904998779296875,130.40899658203125 -54.75899887084961,132.9530029296875 -48.34700012207031,132.9530029296875 C-48.34700012207031,132.9530029296875 48.34700012207031,132.9530029296875 48.34700012207031,132.9530029296875 C54.75899887084961,132.9530029296875 60.904998779296875,130.40899658203125 65.43699645996094,125.87100219726562 C69.97599792480469,121.33799743652344 72.5199966430664,115.19200134277344 72.5199966430664,108.77999877929688 C72.5199966430664,108.77999877929688 72.5199966430664,-108.77999877929688 72.5199966430664,-108.77999877929688z"></path></g><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(133,133,133)" stroke-opacity="1" stroke-width="16" d=" M197.12600708007812,354.1510009765625 C197.12600708007812,354.1510009765625 245.47300720214844,354.1510009765625 245.47300720214844,354.1510009765625"></path></g><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(133,133,133)" stroke-opacity="1" stroke-width="16" d=" M221.3000030517578,136.59100341796875 C221.3000030517578,136.59100341796875 221.3000030517578,148.67799377441406 221.3000030517578,148.67799377441406"></path></g></g><g style="display: block;" mask="url(#__lottie_element_79_1)"><g transform="matrix(1,0,0,1,378,429)" opacity="1"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(133,133,133)" stroke-opacity="1" stroke-width="16" d=" M140,-168 C140,-168 -137,109 -137,109"></path></g></g></g></g></svg> -->
         </div>
         <h1
           class="text-4xl text-balance text-gray-800 font-semibold min-h-fit dark:text-secondary"
@@ -69,13 +67,32 @@ import Particles from '../components/ui/Particles'
       </div>
     </section>
 
-    <!-- Stack Section -->
+    <section class="pt-28">
+      <div class="mx-6 flex flex-col gap-6">
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col gap-1">
+            <h2 class="text-2xl text-gray-800 font-semibold dark:text-secondary">
+              Mi stack
+            </h2>
+            <p class="text-sm text-gray-800 dark:text-terteary max-w-[300px]">
+              Creo proyectos funcionales y escalables con estas tecnologías.
+            </p>
+          </div>
 
+          <button class="text-sm underline">Ver listado completo</button>
+        </div>
 
-    
+        <!-- Frontend -->
+         <TechFront client:only="react" />
+        <!-- Cloud -->
+        <TechCloud client:only="react" />
+        <!-- Frontend -->
+         <TechColaborate client:only="react" />
+     
+      </div>
+    </section>
 
-    <!-- Last projects section -->
-    <section class="pt-20 flex flex-col gap-6 relative z-30">
+    <section class="pt-20 flex flex-col gap-6">
       <div class="flex flex-col gap-1">
         <h2
           class="text-2xl text-gray-800 font-semibold dark:text-secondary mx-6"
@@ -92,7 +109,7 @@ import Particles from '../components/ui/Particles'
           <Jobs client:visible />
           <aside class="flex flex-col gap-1">
             <div
-              class="flex flex-col gap-1  top-[71px] "
+              class="flex flex-col gap-1  top-[71px] bg-white w-full dark:bg-[#161616]"
             >
               <h3 class="font-semibold">Tech lead - Rand abogados</h3>
               <p class="text-xs text-terteary">
@@ -106,27 +123,7 @@ import Particles from '../components/ui/Particles'
               out in a competitive market. The challenge was to modernize their
               brand identity without alienating their existing customers.
             </p>
-            <div class="flex items-center gap-2 mt-2">
-              <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
-                <div class="w-5">
-                  <Figma client:only="react" />
-                </div>
-                <p class="text-xs font-semibold">Figma</p>
-              </a>
-              <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
-                <div class="w-5">
-                  <NextJS client:only="react" />
-                </div>
-                <p class="text-xs font-semibold">Next</p>
-              </a>
-              <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
-                <div class="w-5">
-                  <TailwindIcon client:only="react" />
-                </div>
-                <p class="text-xs font-semibold">Tailwind</p>
-              </a>
-
-            </div>
+            <a href="" class="text-terteary">Leer más</a>
           </aside>
         </main>
       </div>
