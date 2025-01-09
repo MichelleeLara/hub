@@ -4,13 +4,13 @@ import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
 import Technologies from "../components/Technologies";
-import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion, Figma, TailwindIcon} from '../icons/Icons'
+import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion, Figma, TailwindIcon, NextJS} from '../icons/Icons'
 import TechFront from '../sections/TechFront'
 import TechColaborate from '../sections/TechColaborate'
 import TechCloud from '../sections/TechCloud'
 import Header from "../components/Header";
 import Particles from '../components/ui/Particles'
-import NextJS from "../icons/NextJS.astro";
+// import NextJS from "../icons/NextJS.astro";
 
 ---
 
@@ -132,19 +132,19 @@ import NextJS from "../icons/NextJS.astro";
             <div class="flex items-center gap-2 mt-2">
               <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
                 <div class="w-5">
-                  <Figma />
+                  <Figma client:only="react" />
                 </div>
                 <p class="text-xs font-semibold">Figma</p>
               </a>
               <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
                 <div class="w-5">
-                  <NextJS />
+                  <NextJS client:only="react" />
                 </div>
                 <p class="text-xs font-semibold">Next</p>
               </a>
               <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
                 <div class="w-5">
-                  <TailwindIcon />
+                  <TailwindIcon client:only="react" />
                 </div>
                 <p class="text-xs font-semibold">Tailwind</p>
               </a>
