@@ -21,10 +21,10 @@ const Header = () => {
           if (currentScroll > lastScroll) {
             setHidden(false);
             setCurrentVariant("hidden");
-          } else if ( currentScroll < lastScroll && currentScroll > 0){
+          } else if ( currentScroll < lastScroll && currentScroll > 130){
             setHidden(true);
             setCurrentVariant("visible");
-          } else if (currentScroll === 0){
+          } else if (currentScroll < 130){
             setHidden(false);
             setCurrentVariant('expanded')
           }
