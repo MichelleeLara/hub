@@ -21,10 +21,10 @@ const Header = () => {
           if (currentScroll > lastScroll) {
             setHidden(false);
             setCurrentVariant("hidden");
-          } else if ( currentScroll < lastScroll && currentScroll > 60){
+          } else if ( currentScroll < lastScroll && currentScroll > 130){
             setHidden(true);
             setCurrentVariant("visible");
-          } else if (currentScroll < 60){
+          } else if (currentScroll < 130){
             setHidden(false);
             setCurrentVariant('expanded')
           }
@@ -49,15 +49,19 @@ const variants = {
     backgroundColor: "rgba(0,0,0,0)", // transparente
     transition: {
       // Aquí definimos transiciones separadas
-
+      backgroundColor: {
+        duration: .3,   // Duración para el color
+        ease: "easeInOut",
+        stiffness:100,
+      },
       // Si deseas que las demás props (por ejemplo y, width, etc.) usen otra transición,
       // las declaras, o usas "default"
-
+      default: {
         type: "spring",
         duration: 0.4,
         stiffness: 450,
         damping: 32
-
+      }
     }
   },
   visible: {
@@ -67,15 +71,19 @@ const variants = {
     backgroundColor: "#1c1c1c",
     transition: {
       // Aquí definimos transiciones separadas
-   
+      backgroundColor: {
+        duration: .3,   // Duración para el color
+        ease: "easeInOut",
+        stiffness:100
+      },
       // Si deseas que las demás props (por ejemplo y, width, etc.) usen otra transición,
       // las declaras, o usas "default"
-
+      default: {
         type: "spring",
         duration: 0.4,
         stiffness: 450,
         damping: 32
-
+      }
     }
   },
   hidden: {
@@ -85,15 +93,19 @@ const variants = {
     backgroundColor: "#1c1c1c",
     transition: {
       // Aquí definimos transiciones separadas
-     
+      backgroundColor: {
+        duration: .3,   // Duración para el color
+        ease: "easeInOut",
+        stiffness:100
+      },
       // Si deseas que las demás props (por ejemplo y, width, etc.) usen otra transición,
       // las declaras, o usas "default"
-
+      default: {
         type: "spring",
         duration: 0.4,
         stiffness: 450,
         damping: 32
-
+      }
     }
   },
 };
