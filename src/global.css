@@ -3,17 +3,7 @@
 @tailwind utilities;
 
 .tech-card {
-    container-type: inline-size;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: #1a1a1a;
-    border-radius: 1rem;
-    overflow: hidden;
-    position: relative;
-    min-width: 180px;
+ 
   }
   
   .icon-container {
@@ -29,8 +19,9 @@
     width: 28px;
     height: 28px;
     display: grid;
-    place-items: center;
-    position: relative;
+    display: flex;
+    justify-items: center;
+    align-items: center;
     z-index: 2;
   }
   
@@ -63,4 +54,6 @@
       transform: scale(1.1);
     }
   }
+  
+
   

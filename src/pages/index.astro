@@ -4,12 +4,13 @@ import Layout from "../layouts/Layout.astro";
 import { AnimateFragments } from "../components/Hero";
 import Jobs from "../components/Jobs";
 import Technologies from "../components/Technologies";
-import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion} from '../icons/Icons'
+import { AwsIcon, GoogleIcon, GitHubIcon, Postman, Notion, Figma, TailwindIcon} from '../icons/Icons'
 import TechFront from '../sections/TechFront'
 import TechColaborate from '../sections/TechColaborate'
 import TechCloud from '../sections/TechCloud'
 import Header from "../components/Header";
 import Particles from '../components/ui/Particles'
+import NextJS from "../icons/NextJS.astro";
 
 ---
 
@@ -21,6 +22,7 @@ import Particles from '../components/ui/Particles'
   
     <Header client:only="react"/>
 
+    <!-- Hero section -->
     <section class="pt-32">
       <div class="mx-6 flex flex-col gap-4 relative z-30">
         <div class="text-xs flex items-center gap-2">
@@ -67,6 +69,7 @@ import Particles from '../components/ui/Particles'
       </div>
     </section>
 
+    <!-- Stack Section -->
     <section class="pt-28">
       <div class="mx-6 flex flex-col gap-6">
         <div class="flex items-center justify-between">
@@ -92,7 +95,10 @@ import Particles from '../components/ui/Particles'
       </div>
     </section>
 
-    <section class="pt-20 flex flex-col gap-6">
+    
+
+    <!-- Last projects section -->
+    <section class="pt-20 flex flex-col gap-6 relative z-30">
       <div class="flex flex-col gap-1">
         <h2
           class="text-2xl text-gray-800 font-semibold dark:text-secondary mx-6"
@@ -109,7 +115,7 @@ import Particles from '../components/ui/Particles'
           <Jobs client:visible />
           <aside class="flex flex-col gap-1">
             <div
-              class="flex flex-col gap-1  top-[71px] bg-white w-full dark:bg-[#161616]"
+              class="flex flex-col gap-1  top-[71px] "
             >
               <h3 class="font-semibold">Tech lead - Rand abogados</h3>
               <p class="text-xs text-terteary">
@@ -123,7 +129,27 @@ import Particles from '../components/ui/Particles'
               out in a competitive market. The challenge was to modernize their
               brand identity without alienating their existing customers.
             </p>
-            <a href="" class="text-terteary">Leer más</a>
+            <div class="flex items-center gap-2 mt-2">
+              <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
+                <div class="w-5">
+                  <Figma />
+                </div>
+                <p class="text-xs font-semibold">Figma</p>
+              </a>
+              <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
+                <div class="w-5">
+                  <NextJS />
+                </div>
+                <p class="text-xs font-semibold">Next</p>
+              </a>
+              <a class="flex items-center gap-1.5 bg-[#111111ed] w-fit rounded-full py-1 px-2.5 min-h-[28px]">
+                <div class="w-5">
+                  <TailwindIcon />
+                </div>
+                <p class="text-xs font-semibold">Tailwind</p>
+              </a>
+
+            </div>
           </aside>
         </main>
       </div>
